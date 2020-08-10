@@ -1,9 +1,9 @@
 nav {
+  position: fixed;
+  width: 100%;
   padding-top: 0.4em;
   padding-bottom: 0.4em;
   background-color:  #222222;
-  border-radius: 1em;
-  margin-bottom: 1.5em;
 }
 
 #nav-list{

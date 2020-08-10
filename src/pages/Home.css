@@ -1,0 +1,62 @@
+#homeContainer{
+  padding-bottom: 40px;
+}
+
+#slideshow {
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#minions-img {
+  height: 100%;
+  width: 100%;
+}
+
+.arrowBtn{
+  position: absolute;
+  border-radius: 100%;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  outline: none;
+}
+
+#right-arrowBtn{
+  left: 95%
+}
+#left-arrowBtn{
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  right: 95%;
+}
+
+.arrowSvg {
+  height: 30px;
+}
+
+#categoryContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10em;
+}
+
+#minions-pls-img{
+  height: 300px;
+}
+
+#categories{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.category{
+  background-color: #353535;
+  width: 300px;
+  padding: 20px 15px;
+  color: white;
+  font-size: 20px; 
+}
+
