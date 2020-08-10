@@ -1,0 +1,32 @@
+nav {
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  background-color:  #222222;
+  border-radius: 1em;
+  margin-bottom: 1.5em;
+}
+
+#nav-list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white
+}
+
+.nav-btn{
+  display: flex;
+  flex-direction: row;
+}
+
+li{
+  margin-right: 3em;
+  list-style: none;
+}
+
+a:visited{
+  color:white
+}
+
+a{
+  text-decoration: none;
+}
