@@ -20,7 +20,7 @@ export default (props) => {
       <ul id="nav-list">
         <div className="nav-btn">
           <li><NavLink to="/">Home</NavLink></li>
-          <li>Produtos</li>
+          <li><NavLink to="/product">Produtos</NavLink></li>
         </div>
         {logged ? 
           <div className="nav-btn">

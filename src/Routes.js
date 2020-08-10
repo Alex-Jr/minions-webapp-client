@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { Home, Login } from "./pages";
+import { Home, Login, ProductList, Product } from "./pages";
 import NavBar from "./components/NavBar";
 
 export default (props) => {
@@ -13,6 +13,12 @@ export default (props) => {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/product">
+          <ProductList />
+        </Route>
+        <Route exact path="/product/:id">
+          <Product />
         </Route>
       </Switch>
     </Router>

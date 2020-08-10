@@ -2,7 +2,7 @@ nav {
   width: 100%;
   padding-top: 0.4em;
   padding-bottom: 0.4em;
-  background-color:  #222222;
+  background-color:  #303030;
 }
 
 #nav-list{
@@ -27,5 +27,6 @@ a:visited{
 }
 
 a{
+  color: white;
   text-decoration: none;
 }
