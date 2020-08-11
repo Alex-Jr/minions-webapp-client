@@ -23,9 +23,9 @@ const Product = () => {
   }, [id]);
 
   const handleAddToCart = () => {
+    productInfo["quantity"] = 1;
     dispatch(addtocart(productInfo))
   }
-
 
   return (
     <div id="product-page">

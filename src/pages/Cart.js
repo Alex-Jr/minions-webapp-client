@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import FormatPrice from "../Utils/FormatPrice";
 import "./Cart.css";
 
 const Cart = () => {
-  const history = useHistory()
+  const [totalPrice, setTotalPrice] = useState(0)
+
   const products = useSelector((state) => state.cartReducer.products);
   const logged = useSelector((state) => state.userReducer.logged);
+
+  const history = useHistory()
   const handleSubmitPurchase = () => {
     if(!logged){
       history.push("/login")
     }
   }
+
+  useEffect(() => {
+    let price = 0;
+    products.forEach((product) => price += (product.quantity * product.price))
+    setTotalPrice(price)
+  }, [products])
+
 
   return (
     <div id="cart-page">
@@ -47,7 +57,7 @@ const Cart = () => {
         </tbody>
       </table>
       <div id="cart-finishPurchase">
-        <div id="cart-finishPurchaseTotal">TOTAL: {FormatPrice(40.50)}</div>
+        <div id="cart-finishPurchaseTotal">TOTAL: {FormatPrice(totalPrice)}</div>
         <button id="cart-finishPurchaseBtn" onClick={() => {handleSubmitPurchase()}}>FINALIZAR COMPRA</button>
       </div>
     </div>
