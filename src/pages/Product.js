@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./Product.css";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import ProductServices from "../services/ProductServices";
+import { addtocart } from "../redux/actions/cart";
 
 const Product = () => {
   let { id } = useParams();
   const [productInfo, setProductInfo] = useState();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     ProductServices.getProductInfo(id)
       .then((response) => {
@@ -26,6 +31,11 @@ const Product = () => {
     return price.join(",");
   };
 
+  const handleAddToCart = () => {
+    dispatch(addtocart(productInfo))
+  }
+
+
   return (
     <div id="productListContainer">
       {productInfo && (
@@ -42,9 +52,9 @@ const Product = () => {
             <div id="productDesc">{productInfo.desc}</div>
             <div id="productPrice">R${formatPrice(productInfo.price)}</div>
             <button
-              id="buyBtn"
+              id="addtocart-btn"
               onClick={() => {
-                alert("você me clicou!");
+                handleAddToCart()
               }}
             >
               RESERVAR
