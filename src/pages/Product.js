@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 
 import ProductServices from "../services/ProductServices";
 import { addtocart } from "../redux/actions/cart";
+import FormatPrice from "../Utils/FormatPrice";
 
 const Product = () => {
   let { id } = useParams();
@@ -20,16 +21,6 @@ const Product = () => {
         console.log(err)
       });
   }, [id]);
-
-
-  const formatPrice = (price) => {
-    price = price.toString().split(".");
-    if (price.length === 1) return price + ",00";
-    if (price[1].length === 1) {
-      price[1] += "0";
-    }
-    return price.join(",");
-  };
 
   const handleAddToCart = () => {
     dispatch(addtocart(productInfo))
@@ -50,7 +41,7 @@ const Product = () => {
           <div id="product-right" className="product-textContainer">
             <div id="product-name">{productInfo.name}</div>
             <div id="product-desc">{productInfo.desc}</div>
-            <div id="product-price">R${formatPrice(productInfo.price)}</div>
+            <div id="product-price">{FormatPrice(productInfo.price)}</div>
             <button
               id="product-addtocartBtn"
               onClick={() => {
