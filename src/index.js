@@ -24,16 +24,14 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "prod-minions-webapp-orders-api",
-        endpoint:
-          "https://0i1gl8qra7.execute-api.us-east-1.amazonaws.com/prod/",
-        region: "us-east-1",
+        name: awsConfig.orders_apiGateway.NAME,
+        endpoint: awsConfig.orders_apiGateway.URL,
+        region: awsConfig.orders_apiGateway.REGION,
       },
       {
-        name: "prod-minions-webapp-products-api",
-        endpoint:
-          "https://zirgcl1e7a.execute-api.us-east-1.amazonaws.com/prod/",
-        region: "us-east-1",
+        name: awsConfig.products_apiGateway.NAME,
+        endpoint: awsConfig.products_apiGateway.URL,
+        region: awsConfig.products_apiGateway.REGION,
       },
     ],
   },
