@@ -1,12 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import FormatPrice from "../Utils/FormatPrice";
 import "./Cart.css";
 
 const Cart = () => {
+  const history = useHistory()
   const products = useSelector((state) => state.cartReducer.products);
+  const logged = useSelector((state) => state.userReducer.logged);
   const handleSubmitPurchase = () => {
-    
+    if(!logged){
+      history.push("/login")
+    }
   }
 
   return (
