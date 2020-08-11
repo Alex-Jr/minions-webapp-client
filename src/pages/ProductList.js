@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const productListData = [
   {
-    id: 1,
+    id: 124,
     name: "Boneco 12 Polegadas - Kevin",
     img: process.env.PUBLIC_URL + "/img/product1.png",
     price: 60.33,
@@ -41,8 +41,8 @@ const ProductList = () => {
       <div id="productGrid">
         {productListData.map((product, index) => {
           return (
-            <Link to={"/product/" + product.id}>
-              <div className="productContainer" key={index}>
+            <Link to={"/product/" + product.id} key={index}>
+              <div className="productContainer">
                 <img src={product.img} alt={product.name} className="productImg"></img>
                 <p className="productName">{product.name}</p>
                 <p className="productPrice">R$ {product.price}</p>
