@@ -18,14 +18,18 @@ export default (props) => {
 
   let cartIcon =
     cartCount > 0 ? (
-      <li id="cartContainer">
-        <img
-          src={process.env.PUBLIC_URL + "/svg/shopping-cart.svg"}
-          alt="shopping cart icon"
-          id="shoppingCartIcon"
-        />
-        <div id="cartCount">{cartCount < 10 ? `0${cartCount}` : cartCount}</div>
-      </li>
+      <NavLink to="/cart">
+        <li id="cartContainer">
+          <img
+            src={process.env.PUBLIC_URL + "/svg/shopping-cart.svg"}
+            alt="shopping cart icon"
+            id="shoppingCartIcon"
+          />
+          <div id="cartCount">
+            {cartCount < 10 ? `0${cartCount}` : cartCount}
+          </div>
+        </li>
+      </NavLink>
     ) : (
       <div></div>
     );

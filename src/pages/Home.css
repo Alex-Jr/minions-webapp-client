@@ -1,20 +1,20 @@
-#homeContainer{
+#home-page{
   padding-bottom: 40px;
 }
 
-#slideshow {
+#home-slideshow {
   height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#minions-img {
+#home-slideshowImg {
   height: 100%;
   width: 100%;
 }
 
-.arrowBtn{
+.home-arrowBtn{
   position: absolute;
   border-radius: 100%;
   padding-top: 5px;
@@ -22,37 +22,37 @@
   outline: none;
 }
 
-#right-arrowBtn{
+#home-rightArrowBtn{
   left: 95%
 }
-#left-arrowBtn{
+#home-leftArrowBtn{
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   right: 95%;
 }
 
-.arrowSvg {
+.home-arrowSvg {
   height: 30px;
 }
 
-#categoryContainer{
+#home-categoryContainer{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-top: 10em;
 }
 
-#minions-pls-img{
+#home-minionCategory{
   height: 300px;
 }
 
-#categories{
+#home-categories{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.category{
+.home-category{
   background-color: #353535;
   width: 300px;
   padding: 20px 15px;

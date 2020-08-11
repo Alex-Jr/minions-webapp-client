@@ -37,15 +37,15 @@ const productListData = [
 
 const ProductList = () => {
   return (
-    <div id="productListContainer">
-      <div id="productGrid">
+    <div id="productList-page">
+      <div id="productList-grid">
         {productListData.map((product, index) => {
           return (
             <Link to={"/product/" + product.id} key={index}>
-              <div className="productContainer">
-                <img src={product.img} alt={product.name} className="productImg"></img>
-                <p className="productName">{product.name}</p>
-                <p className="productPrice">R$ {product.price}</p>
+              <div className="productList-productContainer">
+                <img src={product.img} alt={product.name} className="productList-productImg"></img>
+                <p className="productList-productName productList-text">{product.name}</p>
+                <p className="productList-productPrice productList-text">R$ {product.price}</p>
               </div>
             </Link>
           );

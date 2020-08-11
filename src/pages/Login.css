@@ -1,8 +1,8 @@
-#loginContainer{
+#login-page{
   margin-top: 13%
 }
 
-#form{
+#login-form{
   background-color: #252525;
   width: 400px;
   margin: 0 auto;
@@ -12,13 +12,13 @@
   padding: 15px 15px
 }
 
-label{
+.login-label{
   font-size: 25px;
   margin: 15px 0;
   color: white
 }
 
-input{
+.login-input{
   margin: 15px auto;
   font-size: 25px;
   height: 40px;
@@ -28,5 +28,4 @@ input{
 input[type=text],
 input[type=password] {
     box-sizing : border-box;
-
 }

@@ -24,12 +24,13 @@ const Login = () => {
   };
 
   return (
-    <div id="loginContainer">
-      <form onSubmit={handleSubmit} id="form">
-        <label>
+    <div id="login-page">
+      <form onSubmit={handleSubmit} id="login-form">
+        <label className="login-label">
           Email:
           <br />
           <input
+            className="login-input"
             type="text"
             value={email}
             onChange={(e) => {
@@ -37,10 +38,11 @@ const Login = () => {
             }}
           />
         </label>
-        <label>
+        <label className="login-label">
           Senha:
           <br />
           <input
+            className="login-input"
             type="password"
             value={password}
             onChange={(e) => {
@@ -48,7 +50,7 @@ const Login = () => {
             }}
           />
         </label>
-        <input type="submit" value="Confirmar" />
+        <input type="submit" value="Confirmar" className="login-input" />
       </form>
     </div>
   );

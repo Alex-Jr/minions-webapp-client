@@ -37,22 +37,22 @@ const Product = () => {
 
 
   return (
-    <div id="productListContainer">
+    <div id="product-page">
       {productInfo && (
-        <div id="productContainer">
-          <div id="productLeftContainer" className="container">
+        <div id="product-infoContainer">
+          <div id="product-left" className="product-imgContainer">
             <img
               src={process.env.PUBLIC_URL + "/img/product1.png"}
               alt="minions-please"
-              id="productImg"
+              id="product-img"
             />
           </div>
-          <div id="productRightContainer" className="container">
-            <div id="productName">{productInfo.name}</div>
-            <div id="productDesc">{productInfo.desc}</div>
-            <div id="productPrice">R${formatPrice(productInfo.price)}</div>
+          <div id="product-right" className="product-textContainer">
+            <div id="product-name">{productInfo.name}</div>
+            <div id="product-desc">{productInfo.desc}</div>
+            <div id="product-price">R${formatPrice(productInfo.price)}</div>
             <button
-              id="addtocart-btn"
+              id="product-addtocartBtn"
               onClick={() => {
                 handleAddToCart()
               }}
