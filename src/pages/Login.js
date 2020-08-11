@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Auth } from "aws-amplify";
+import { useHistory } from "react-router-dom";
 
 import { login, singout } from "../redux/actions/user";
 import "./Login.css";
@@ -10,12 +11,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     await Auth.signIn(email, password)
       .then((cognitoUser) => {
         dispatch(login())
+        history.goBack();
       })
       .catch((err) => {
         dispatch(singout())
