@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import FormatPrice from "../Utils/FormatPrice";
+import { updatecart, removefromcart } from "../redux/actions/cart";
 import "./Cart.css";
 
 const Cart = () => {
-  const [totalPrice, setTotalPrice] = useState(0)
+  const {products, totalPrice} = useSelector((state) => state.cartReducer);
 
-  const products = useSelector((state) => state.cartReducer.products);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const history = useHistory()
+  const handleQuantityChange = (productId, newQuantity) => {
+    dispatch(updatecart(productId, newQuantity))
+  }
 
-  useEffect(() => {
-    let price = 0;
-    products.forEach((product) => price += (product.quantity * product.price))
-    setTotalPrice(price)
-  }, [products])
-
+  const handleRemoveProduct = (productId) => {
+    dispatch(removefromcart(productId))
+  }
 
   return (
     <div id="cart-page">
@@ -31,7 +33,7 @@ const Cart = () => {
           </tr>
         </thead>
         <tbody id="cart-tableBody">
-          {products.map((product, index) => {
+          {Object.values(products).map((product, index) => {
             return (
               <tr key={index}>
                 <th>
@@ -41,9 +43,31 @@ const Cart = () => {
                     className="cart-productImg"
                     />
                 </th>
-                <th>{product.name}</th>
+                <th>
+                  {product.name}
+                  <img
+                    src={process.env.PUBLIC_URL + "/svg/remove.svg"}
+                    alt="minus-icon"
+                    className="cart-svg cart-remove"
+                    onClick={() => {handleRemoveProduct(product.productId)}}
+                  />
+                </th>
                 <th>{FormatPrice(product.price)}</th>
-                <th>{product.quantity}</th>
+                <th>
+                  <img
+                    src={process.env.PUBLIC_URL + "/svg/minus.svg"}
+                    alt="minus-icon"
+                    className="cart-svg"
+                    onClick={() => {handleQuantityChange(product.productId, -1)}}
+                  />
+                  {product.quantity}
+                  <img
+                    src={process.env.PUBLIC_URL + "/svg/add.svg"}
+                    alt="plus-icon"
+                    className="cart-svg"
+                    onClick={() => {handleQuantityChange(product.productId, +1)}}
+                  />
+                </th>
                 <th>{FormatPrice(product.price * product.quantity)}</th>
               </tr>
             );

@@ -1,5 +1,5 @@
 export default (price) => {
-  price = price.toString().split(".");
+  price = price.toFixed(2).toString().split(".");
   if (price.length === 1) return "R$" + price + ",00";
   if (price[1].length === 1) {
     price[1] += "0";

@@ -1,19 +1,46 @@
-import { ADD_TO_CART, INIT_CART } from "../actions/cart";
+import { ADD_TO_CART, UPDATE_CART, REEMOVE_FROM_CART } from "../actions/cart";
 
 const initialState = {
   count : 0,
-  products: []
+  products: {},
+  totalPrice: 0
 };
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      console.log(state)
-      console.log(action)
+      if(action.product.productId in state.products) return (state);
+
+      const product = action.product;
+      let obj = {}
+      obj[product.productId] = product;
+
       return {
         count : state.count + 1,
-        products: state.products.concat([action.product])
+        products: {...state.products, ...obj},
+        totalPrice: state.totalPrice + (product.quantity * product.price)
       }
+      
+    case UPDATE_CART:
+      const newProductsList = state.products
+      newProductsList[action.productId].quantity += action.newQuantity 
+
+      return {
+        count: state.count,
+        products: newProductsList,
+        totalPrice: state.totalPrice + newProductsList[action.productId].price * action.newQuantity 
+      };
+
+    case REEMOVE_FROM_CART:
+      const newProductList = state.products
+      const { quantity, price } = newProductList[action.productId]
+      delete newProductList[action.productId] 
+
+      return {
+        count: state.count - 1,
+        products: newProductList,
+        totalPrice: state.totalPrice - (quantity * price)
+      };
 
     default:
       return state;
