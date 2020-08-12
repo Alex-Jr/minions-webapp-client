@@ -17,7 +17,7 @@ const Login = () => {
     event.preventDefault();
     await Auth.signIn(email, password)
       .then((cognitoUser) => {
-        dispatch(login())
+        dispatch(login(cognitoUser.attributes))
         history.goBack();
       })
       .catch((err) => {

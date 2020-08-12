@@ -19,15 +19,16 @@ function AppWraper() {
 function App() {
   const dispatch = useDispatch()
   const loadSession = async () => {
-    try {
-      await Auth.currentSession();
-      dispatch(login())
-    }
-    catch(e) {
-      if (e !== 'No current user') {
-        alert(e);
+    await Auth.currentSession()
+    .then((cognitoUser) => {
+      dispatch(login(cognitoUser.idToken.payload))
+    })
+    .catch((err) => {
+      if(err !== "No current user") {
+        alert(err)
       }
-    }
+    });
+  
   }
 
   useEffect(() => {
