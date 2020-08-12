@@ -33,7 +33,7 @@ const Product = () => {
         <div id="product-infoContainer">
           <div id="product-left" className="product-imgContainer">
             <img
-              src={process.env.PUBLIC_URL + "/img/product1.png"}
+              src={productInfo.url}
               alt="minions-please"
               id="product-img"
             />

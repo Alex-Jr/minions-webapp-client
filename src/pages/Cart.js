@@ -38,7 +38,7 @@ const Cart = () => {
               <tr key={index}>
                 <th>
                   <img
-                    src={process.env.PUBLIC_URL + "/img/product1.png"}
+                    src={product.url}
                     alt="product-img"
                     className="cart-productImg"
                     />

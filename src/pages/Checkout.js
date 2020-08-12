@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 const Checkout = () => {
   const [cep, setCEP] = useState("");
-  const [address, setAddress] = useState("");
+  const [street, setStreet] = useState("");
   const [streetNumber, setStreetNumber] = useState("");
   const [neighborhood, setNeighborhood] = useState("");
   const [city, setCity] = useState("");
@@ -30,10 +30,13 @@ const Checkout = () => {
       return
     } 
     const order = {
-      userId: "teste",
+      userId: user.userId,
       address: {
-        street: "Rua capitão Lafay, 330",
-        cep: 23059160
+        cep: `${cep}`,
+        street: `${street},${streetNumber}`,
+        neighborhood: `${neighborhood}`,
+        city: `${city} - ${uf}`,
+        additional: `${additional}`
       },
       products: cart.products,
       totalPrice: cart.totalPrice
@@ -51,7 +54,7 @@ const Checkout = () => {
   useEffect(() => {
     if (cep.length === 8) {
       OrderService.getAddress(cep).then((fullAddress) => {
-        setAddress(fullAddress.logradouro);
+        setStreet(fullAddress.logradouro);
         setNeighborhood(fullAddress.bairro);
         setCity(fullAddress.localidade);
         setUf(fullAddress.uf);
@@ -83,7 +86,7 @@ const Checkout = () => {
             <input
               className="checkout-input"
               type="text"
-              value={address}
+              value={street}
               disabled
             />
           </label>
@@ -158,6 +161,7 @@ const Checkout = () => {
             <input
               className="checkout-input"
               type="text"
+              value={user.email}
               disabled
             />
           </label>

@@ -1,49 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ProductList.css";
 import { Link } from "react-router-dom";
-
-const productListData = [
-  {
-    id: 124,
-    name: "Boneco 12 Polegadas - Kevin",
-    img: process.env.PUBLIC_URL + "/img/product1.png",
-    price: 60.33,
-  },
-  {
-    id: 2,
-    name: "Mini Boneco 6cm - Kevin",
-    img: process.env.PUBLIC_URL + "/img/product2.png",
-    price: 12.11,
-  },
-  {
-    id: 2,
-    name: "Mini Boneco 6cm - Kevin",
-    img: process.env.PUBLIC_URL + "/img/product2.png",
-    price: 12.11,
-  },
-  {
-    id: 2,
-    name: "Mini Boneco 6cm - Kevin",
-    img: process.env.PUBLIC_URL + "/img/product2.png",
-    price: 12.11,
-  },
-  {
-    id: 2,
-    name: "Mini Boneco 6cm - Kevin",
-    img: process.env.PUBLIC_URL + "/img/product2.png",
-    price: 12.11,
-  },
-];
+import ProductServices from "../services/ProductServices";
 
 const ProductList = () => {
+  const [productListData, setProdcutListData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    if(isLoading){
+      ProductServices.getProductList("miniatura").then((data) => {
+        setProdcutListData(data)
+        setIsLoading(false)
+      })
+    }
+  },[isLoading])
+
   return (
     <div id="productList-page">
       <div id="productList-grid">
         {productListData.map((product, index) => {
           return (
-            <Link to={"/product/" + product.id} key={index}>
+            <Link to={"/product/" + product.productId} key={index}>
               <div className="productList-productContainer">
-                <img src={product.img} alt={product.name} className="productList-productImg"></img>
+                <img src={product.url} alt={product.name} className="productList-productImg"></img>
                 <p className="productList-productName productList-text">{product.name}</p>
                 <p className="productList-productPrice productList-text">R$ {product.price}</p>
               </div>
