@@ -8,14 +8,8 @@ const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0)
 
   const products = useSelector((state) => state.cartReducer.products);
-  const logged = useSelector((state) => state.userReducer.logged);
 
   const history = useHistory()
-  const handleSubmitPurchase = () => {
-    if(!logged){
-      history.push("/login")
-    }
-  }
 
   useEffect(() => {
     let price = 0;
@@ -58,7 +52,7 @@ const Cart = () => {
       </table>
       <div id="cart-finishPurchase">
         <div id="cart-finishPurchaseTotal">TOTAL: {FormatPrice(totalPrice)}</div>
-        <button id="cart-finishPurchaseBtn" onClick={() => {handleSubmitPurchase()}}>FINALIZAR COMPRA</button>
+        <button id="cart-finishPurchaseBtn" onClick={() => {history.push("/checkout")}}>FINALIZAR COMPRA</button>
       </div>
     </div>
   );
