@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Product.css";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import ProductServices from "../services/ProductServices";
@@ -11,6 +11,7 @@ const Products = () => {
   let { id } = useParams();
   const [productInfo, setProductInfo] = useState();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     ProductServices.getProductInfo(id)
@@ -46,6 +47,7 @@ const Products = () => {
               id="product-addtocartBtn"
               onClick={() => {
                 handleAddToCart()
+                history.push("/cart")
               }}
             >
               ADICIONAR AO CARRINHO
