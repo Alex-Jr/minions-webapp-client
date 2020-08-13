@@ -48,7 +48,7 @@ const Product = () => {
                 handleAddToCart()
               }}
             >
-              RESERVAR
+              ADICIONAR AO CARRINHO
             </button>
           </div>
         </div>

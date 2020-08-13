@@ -14,7 +14,7 @@ export default {
         return;
       });
   },
-  postOrder: async (order) => {
+  postOrders: async (order) => {
     return await API.post(awsConfig.orders_apiGateway.NAME, `orders`, {body: order})
       .then((response) => {
         return response;

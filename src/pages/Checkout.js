@@ -42,7 +42,7 @@ const Checkout = () => {
       products: cart.products,
       totalPrice: cart.totalPrice
     }
-    await OrderService.postOrder(order).then((response) => {
+    await OrderService.postOrders(order).then((response) => {
       if("orderId" in response){
         history.push("/orderSucessful", {orderId: response.orderId});
       } else {
