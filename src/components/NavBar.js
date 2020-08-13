@@ -50,12 +50,14 @@ export default (props) => {
             <li onClick={handleLogout}>
               <NavLink to="/">Sair</NavLink>
             </li>
-            <li>Minha Conta</li>
+            <li>
+              <NavLink to="/orders">Meus pedidos</NavLink>
+            </li>
           </div>
         ) : (
           <div className="nav-btn">
             {cartIcon}
-            <li>Cadastro</li>
+            <li>
               <NavLink to="/signin">Cadastro</NavLink>
             </li>
             <li>

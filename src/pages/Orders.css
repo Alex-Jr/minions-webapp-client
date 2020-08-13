@@ -1,0 +1,70 @@
+#orders-page{
+  padding-top: 50px;
+}
+
+#orders-table{
+  color: white;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+#orders-tableHeader{
+  background-color: rgb(213, 145, 48);
+  color: black;
+}
+
+#orders-tableHeader tr th{
+  width: 115px;
+  padding: 10px 50px;
+}
+
+#orders-tableBody tr{
+  background-color: #303030; 
+}
+#orders-tableBody tr:nth-of-type(2){
+  background-color: #404040;
+}
+
+#orders-tableBody th{
+  padding: 25px 30px;
+}
+
+#orders-finishPurchase{
+  width: 200px;
+  padding: 40px;
+  margin: 50px auto ;
+  background-color: #303030;
+}
+
+#orders-finishPurchaseTotal{
+  color: white;
+  font-size: 22px;
+}
+
+#orders-finishPurchaseBtn{
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 14px;
+  margin-top: 25px;
+}
+
+.orders-svg{
+  width: 20px;
+  height: 20px;
+  margin: 0 15px;
+}
+
+.orders-remove{
+  width: 25px;
+  height: 25px;
+  margin: 0 5px
+}
+
+
+th a{
+  color: rgb(213, 145, 48)
+}
+
+th a:hover{
+  color: white
+}
