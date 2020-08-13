@@ -16,28 +16,24 @@ const Products = () => {
   useEffect(() => {
     ProductServices.getProductInfo(id)
       .then((response) => {
-        if(response) setProductInfo(response)
+        if (response) setProductInfo(response);
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       });
   }, [id]);
 
   const handleAddToCart = () => {
     productInfo["quantity"] = 1;
-    dispatch(addtocart(productInfo))
-  }
+    dispatch(addtocart(productInfo));
+  };
 
   return (
     <div id="product-page">
       {productInfo && (
         <div id="product-infoContainer">
           <div id="product-left" className="product-imgContainer">
-            <img
-              src={productInfo.url}
-              alt="minions-please"
-              id="product-img"
-            />
+            <img src={productInfo.url} alt="minions-please" id="product-img" />
           </div>
           <div id="product-right" className="product-textContainer">
             <div id="product-name">{productInfo.name}</div>
@@ -46,8 +42,8 @@ const Products = () => {
             <button
               id="product-addtocartBtn"
               onClick={() => {
-                handleAddToCart()
-                history.push("/cart")
+                handleAddToCart();
+                history.push("/cart");
               }}
             >
               ADICIONAR AO CARRINHO

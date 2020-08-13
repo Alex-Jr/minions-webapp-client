@@ -2,45 +2,45 @@ nav {
   width: 100%;
   padding-top: 0.4em;
   padding-bottom: 0.4em;
-  background-color:  #303030;
+  background-color: #303030;
 }
 
-#nav-list{
+#nav-list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: white
+  color: white;
 }
 
-.nav-btn{
+.nav-btn {
   display: flex;
   flex-direction: row;
 }
 
-li{
+li {
   margin-right: 3em;
   list-style: none;
 }
 
-#cartContainer{
+#cartContainer {
   display: flex;
 }
 
-#shoppingCartIcon{
+#shoppingCartIcon {
   margin-top: -7px;
   width: 27px;
   height: 27px;
-  fill: white
+  fill: white;
 }
 
-@media only screen and (max-width:549px) {
-  #cartCount{
+@media only screen and (max-width: 549px) {
+  #cartCount {
     display: none;
   }
 }
 
 @media only screen and (min-width: 550px) {
-  #cartCount{
+  #cartCount {
     background-color: red;
     color: black;
     padding: 3px;

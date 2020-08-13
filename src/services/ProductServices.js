@@ -14,14 +14,14 @@ export default {
         return null;
       });
   },
-  getProductList: async(category) => {
+  getProductList: async (category) => {
     return await API.get(APINAME, `products?category=${category}`)
-    .then((data) => {
-      if (!data) return [];
-      return data;
-    })
-    .catch((err) => {
-      return [];
-    });
-  }
-}
+      .then((data) => {
+        if (!data) return [];
+        return data;
+      })
+      .catch((err) => {
+        return [];
+      });
+  },
+};

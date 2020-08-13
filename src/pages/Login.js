@@ -12,22 +12,22 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsLoading(true)
+    setIsLoading(true);
     await Auth.signIn(email, password)
       .then((cognitoUser) => {
-        dispatch(login(cognitoUser.attributes))
+        dispatch(login(cognitoUser.attributes));
         history.goBack();
       })
       .catch((err) => {
-        dispatch(singout())
-        alert(err.message)
+        dispatch(singout());
+        alert(err.message);
       });
-    setIsLoading(true)
+    setIsLoading(true);
   };
 
   return (
@@ -57,10 +57,11 @@ const Login = () => {
             }}
           />
         </label>
-        <Link to="/signin" className="link-inverted">Ainda não tem conta?</Link>
-        <SubmitButton isLoading={isLoading} title="Confirmar"/>
+        <Link to="/signin" className="link-inverted">
+          Ainda não tem conta?
+        </Link>
+        <SubmitButton isLoading={isLoading} title="Confirmar" />
       </form>
-      
     </div>
   );
 };

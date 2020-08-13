@@ -1,12 +1,21 @@
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { Home, Login, ProductsList, Products, Cart, Checkout, Signin, Orders } from "./pages";
+import {
+  Home,
+  Login,
+  ProductsList,
+  Products,
+  Cart,
+  Checkout,
+  Signin,
+  Orders,
+} from "./pages";
 import NavBar from "./components/NavBar";
 
 export default (props) => {
   return (
     <Router>
-      <NavBar/>
+      <NavBar />
       <Switch>
         <Route exact path="/">
           <Home />

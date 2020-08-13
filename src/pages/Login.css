@@ -1,13 +1,13 @@
-#login-page{
-  margin-top: 13%
+#login-page {
+  margin-top: 13%;
 }
 
-#login-form{
+#login-form {
   background-color: #252525;
   width: 400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 15px 15px
+  padding: 15px 15px;
 }

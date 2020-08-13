@@ -1,13 +1,13 @@
-#signin-page{
-  margin-top: 13%
+#signin-page {
+  margin-top: 13%;
 }
 
-#signin-form{
+#signin-form {
   background-color: #252525;
   width: 400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 15px 15px
+  padding: 15px 15px;
 }

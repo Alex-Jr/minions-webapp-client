@@ -1,5 +1,5 @@
 @media only screen and (min-width: 800px) {
-  #product-page{
+  #product-page {
     display: flex;
     justify-content: center;
   }
@@ -10,7 +10,8 @@
     margin-top: 25px;
   }
 
-  .product-imgContainer, .product-textContainer {
+  .product-imgContainer,
+  .product-textContainer {
     background-color: #303030;
     color: white;
   }
@@ -48,10 +49,10 @@
   #product-price {
     font-size: 24px;
     font-weight: bold;
-    color: rgb(213, 145, 48)
+    color: rgb(213, 145, 48);
   }
-  
-  #product-addtocartBtn{
+
+  #product-addtocartBtn {
     position: relative;
     width: 100%;
     padding: 10px 0;

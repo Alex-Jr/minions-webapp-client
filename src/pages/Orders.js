@@ -13,10 +13,9 @@ const Orders = () => {
 
   useEffect(() => {
     if (userId !== null) {
-      OrderService.getOrders(userId)
-        .then((data) => {
-          setOrdersData(data);
-        });
+      OrderService.getOrders(userId).then((data) => {
+        setOrdersData(data);
+      });
     }
   }, [userId]);
 
@@ -34,27 +33,21 @@ const Orders = () => {
         <tbody id="orders-tableBody">
           {ordersData.map((order, index) => {
             const date = new Date(order.orderedAt);
-            const convertedDate = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
+            const convertedDate = `${date.getDate()}/${
+              date.getMonth() + 1
+            }/${date.getFullYear()}`;
             return (
-            <tr key={index}>
-              <th>
-                <Link to={`/orders/${order.orderId}`}>
-                  {order.orderId}
-                </Link>
-              </th>
-              <th>
-                {convertedDate}
-              </th>
-              <th>
-                {FormatPrice(order.totalPrice)}
-              </th>
-              <th>
-                <Link to={`/orders/${order.orderId}`}>
-                  Visualizar
-                </Link>
-              </th>
-            </tr>
-            )
+              <tr key={index}>
+                <th>
+                  <Link to={`/orders/${order.orderId}`}>{order.orderId}</Link>
+                </th>
+                <th>{convertedDate}</th>
+                <th>{FormatPrice(order.totalPrice)}</th>
+                <th>
+                  <Link to={`/orders/${order.orderId}`}>Visualizar</Link>
+                </th>
+              </tr>
+            );
           })}
         </tbody>
       </table>

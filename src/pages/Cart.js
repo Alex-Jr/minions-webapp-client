@@ -7,18 +7,18 @@ import { updatecart, removefromcart } from "../redux/actions/cart";
 import "./Cart.css";
 
 const Cart = () => {
-  const {products, totalPrice} = useSelector((state) => state.cartReducer);
+  const { products, totalPrice } = useSelector((state) => state.cartReducer);
 
   const history = useHistory();
   const dispatch = useDispatch();
 
   const handleQuantityChange = (productId, newQuantity) => {
-    dispatch(updatecart(productId, newQuantity))
-  }
+    dispatch(updatecart(productId, newQuantity));
+  };
 
   const handleRemoveProduct = (productId) => {
-    dispatch(removefromcart(productId))
-  }
+    dispatch(removefromcart(productId));
+  };
 
   return (
     <div id="cart-page">
@@ -41,7 +41,7 @@ const Cart = () => {
                     src={product.url}
                     alt="product-img"
                     className="cart-productImg"
-                    />
+                  />
                 </th>
                 <th>
                   {product.name}
@@ -49,7 +49,9 @@ const Cart = () => {
                     src={process.env.PUBLIC_URL + "/svg/remove.svg"}
                     alt="minus-icon"
                     className="cart-svg cart-remove"
-                    onClick={() => {handleRemoveProduct(product.productId)}}
+                    onClick={() => {
+                      handleRemoveProduct(product.productId);
+                    }}
                   />
                 </th>
                 <th>{FormatPrice(product.price)}</th>
@@ -59,10 +61,10 @@ const Cart = () => {
                     alt="minus-icon"
                     className="cart-svg"
                     onClick={() => {
-                      if(product.quantity - 1 === 0) {
-                        handleRemoveProduct(product.productId)
+                      if (product.quantity - 1 === 0) {
+                        handleRemoveProduct(product.productId);
                       } else {
-                        handleQuantityChange(product.productId, -1)
+                        handleQuantityChange(product.productId, -1);
                       }
                     }}
                   />
@@ -71,7 +73,9 @@ const Cart = () => {
                     src={process.env.PUBLIC_URL + "/svg/add.svg"}
                     alt="plus-icon"
                     className="cart-svg"
-                    onClick={() => {handleQuantityChange(product.productId, +1)}}
+                    onClick={() => {
+                      handleQuantityChange(product.productId, +1);
+                    }}
                   />
                 </th>
                 <th>{FormatPrice(product.price * product.quantity)}</th>
@@ -81,8 +85,17 @@ const Cart = () => {
         </tbody>
       </table>
       <div id="cart-finishPurchase">
-        <div id="cart-finishPurchaseTotal">TOTAL: {FormatPrice(totalPrice)}</div>
-        <button id="cart-finishPurchaseBtn" onClick={() => {history.push("/checkout")}}>FINALIZAR COMPRA</button>
+        <div id="cart-finishPurchaseTotal">
+          TOTAL: {FormatPrice(totalPrice)}
+        </div>
+        <button
+          id="cart-finishPurchaseBtn"
+          onClick={() => {
+            history.push("/checkout");
+          }}
+        >
+          FINALIZAR COMPRA
+        </button>
       </div>
     </div>
   );

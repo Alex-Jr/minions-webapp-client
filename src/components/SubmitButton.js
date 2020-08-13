@@ -1,9 +1,13 @@
 import React from "react";
-import "./SubmitButton.css"
+import "./SubmitButton.css";
 
-const SubmitButton = ({isLoading, title, className}) => {
+const SubmitButton = ({ isLoading, title, className }) => {
   return (
-    <button type="submit" className={`submitButton ${className}`} disabled={isLoading}>
+    <button
+      type="submit"
+      className={`submitButton ${className}`}
+      disabled={isLoading}
+    >
       {isLoading && (
         <img
           src={process.env.PUBLIC_URL + "/svg/refresh.svg"}

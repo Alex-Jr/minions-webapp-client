@@ -20,20 +20,21 @@ const Checkout = () => {
   const user = useSelector((state) => state.userReducer);
   const cart = useSelector((state) => state.cartReducer);
 
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
-    if(Object.values(cart.products).length === 0 ) history.push("/")
-  })
+    if (Object.values(cart.products).length === 0) history.push("/");
+  });
+
   const handleCepChange = (cep) => {
     setCEP(FormatNumber(cep));
   };
 
-  const handleSubmitPurchase = async() => {
-    if(!user.logged){
-      history.push("/login")
-      return
-    } 
+  const handleSubmitPurchase = async () => {
+    if (!user.logged) {
+      history.push("/login");
+      return;
+    }
     const order = {
       userId: user.userId,
       email: user.email,
@@ -42,27 +43,26 @@ const Checkout = () => {
         street: `${street},${streetNumber}`,
         neighborhood: `${neighborhood}`,
         city: `${city} - ${uf}`,
-        additional: `${additional}`
+        additional: `${additional}`,
       },
       products: cart.products,
-      totalPrice: cart.totalPrice
-    }
+      totalPrice: cart.totalPrice,
+    };
     await OrderService.postOrders(order).then((response) => {
-      if("orderId" in response){
-        history.push("/orderSucessful", {orderId: response.orderId});
+      if ("orderId" in response) {
+        history.push("/orderSucessful", { orderId: response.orderId });
       } else {
-        alert("Falha ao realizar pedido!")
+        alert("Falha ao realizar pedido!");
       }
-    })
-    
-  }
+    });
+  };
 
   useEffect(() => {
     if (cep.length === 8) {
       OrderService.getAddress(cep).then((fullAddress) => {
-        if(!fullAddress) {
+        if (!fullAddress) {
           alert("CEP Não encontrado");
-          return
+          return;
         }
         setStreet(fullAddress.logradouro);
         setNeighborhood(fullAddress.bairro);
@@ -77,7 +77,7 @@ const Checkout = () => {
       <form
         id="checkout-grid"
         onSubmit={() => {
-          handleSubmitPurchase()
+          handleSubmitPurchase();
         }}
       >
         <div id="checkout-addressContainer">
@@ -162,14 +162,11 @@ const Checkout = () => {
           </label>
         </div>
         <div id="checkout-paymentMethod">
-          <h1 className="checkout-title">Informação de contato</h1>
+          <h1 className="checkout-title">Informações Pessoais</h1>
           <label className="checkout-label">
             Nome:
             <br />
-            <input
-              className="checkout-input"
-              type="text"
-            />
+            <input className="checkout-input" type="text" />
           </label>
           <label className="checkout-label">
             Email:
@@ -191,9 +188,6 @@ const Checkout = () => {
             title="RESERVAR PEDIDO"
             className="checkout-btn"
           />
-          </label>
-          <button id="checkout-button" onClick={() => {handleSubmitPurchase()}}>RESERVAR PEDIDO</button>
-        </div>
         </div>
       </form>
     </div>

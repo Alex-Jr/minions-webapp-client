@@ -89,7 +89,9 @@ const Signin = () => {
             }}
           />
         </label>
-        <Link to="/login" className="link-inverted">Já tem conta?</Link>
+        <Link to="/login" className="link-inverted">
+          Já tem conta?
+        </Link>
         <SubmitButton isLoading={isLoading} title="Confirmar" />
       </form>
     </div>
