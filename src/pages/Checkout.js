@@ -31,6 +31,7 @@ const Checkout = () => {
     } 
     const order = {
       userId: user.userId,
+      email: user.email,
       address: {
         cep: `${cep}`,
         street: `${street},${streetNumber}`,
