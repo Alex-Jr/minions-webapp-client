@@ -74,13 +74,19 @@ const Checkout = () => {
 
   return (
     <div id="checkout-page">
-      <div id="checkout-grid">
+      <form
+        id="checkout-grid"
+        onSubmit={() => {
+          handleSubmitPurchase()
+        }}
+      >
         <div id="checkout-addressContainer">
           <h1 className="checkout-title">Dados de Entrega</h1>
           <label className="checkout-label">
             CEP:
             <br />
             <input
+              required={true}
               className="checkout-input"
               type="text"
               value={cep}
@@ -188,7 +194,8 @@ const Checkout = () => {
           </label>
           <button id="checkout-button" onClick={() => {handleSubmitPurchase()}}>RESERVAR PEDIDO</button>
         </div>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };
