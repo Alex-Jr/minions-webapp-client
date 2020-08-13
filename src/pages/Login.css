@@ -11,16 +11,3 @@
   justify-content: center;
   padding: 15px 15px
 }
-
-.login-label{
-  font-size: 25px;
-  margin: 15px 0;
-  color: white
-}
-
-.login-input{
-  margin: 15px auto;
-  font-size: 25px;
-  height: 40px;
-  width:100%;
-} 

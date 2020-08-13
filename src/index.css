@@ -13,10 +13,18 @@ code {
     monospace;
 }
 
+label{
+  font-size: 22px;
+  color: white
+}
+
 input[type=text],
 input[type=password],
 input[type=email] {
-    box-sizing : border-box;
+  margin: 7px auto;
+  font-size: 21px;
+  padding: 7px 10px;
+  width:100%;    box-sizing : border-box;
 }
 
 a:visited{
@@ -31,3 +39,13 @@ a{
   color: white;
   text-decoration: none;
 }
+
+a.link-inverted{
+  color: rgb(213, 145, 48); 
+  text-decoration: none;
+}
+
+a.link-inverted:hover{
+  color: white
+}
+
