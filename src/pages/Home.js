@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import "./Home.css";
 
 const slideShowData = [
@@ -64,21 +66,45 @@ const Home = () => {
           </button>
         </div>
         <div id="home-categoryContainer">
-            <img src={process.env.PUBLIC_URL + "/img/minions-pls.png"} alt="minions-please" id="home-minionCategory"/>
-            <div id="home-categories">
-              <div className="home-category">
-                Brinquedos
-              </div>
-              <div className="home-category">
-                Pelúcia
-              </div>
-              <div className="home-category">
-                Roupas
-              </div>
-              <div className="home-category">
-                Miscelânia
-              </div>
+          <img
+            src={process.env.PUBLIC_URL + "/img/minions-pls.png"}
+            alt="minions-please"
+            id="home-minionCategory"
+          />
+          <div id="home-categories">
+            <div className="home-category">
+              <Link
+                to={{ pathname: "/products", state: { category: "miniatura" } }}
+                className="link-inverted"
+              >
+                Miniaturas
+              </Link>
             </div>
+            <div className="home-category">
+              <Link
+                to={{ pathname: "/products", state: { category: "pelucia" } }}
+                className="link-inverted"
+              >
+                Pelúcia
+              </Link>
+            </div>
+            <div className="home-category">
+              <Link
+                to={{ pathname: "/products", state: { category: "roupa" } }}
+                className="link-inverted"
+              >
+                Roupas
+              </Link>
+            </div>
+            <div className="home-category">
+              <Link
+                to={{ pathname: "/products", state: { category: "misc" } }}
+                className="link-inverted"
+              >
+                Miscelânia
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>
