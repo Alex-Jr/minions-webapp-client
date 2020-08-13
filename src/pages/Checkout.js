@@ -22,6 +22,9 @@ const Checkout = () => {
 
   const history = useHistory()
 
+  useEffect(() => {
+    if(Object.values(cart.products).length === 0 ) history.push("/")
+  })
   const handleCepChange = (cep) => {
     setCEP(FormatNumber(cep));
   };
