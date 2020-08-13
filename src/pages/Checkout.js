@@ -5,8 +5,10 @@ import FormatNumber from "../Utils/FormatNumber";
 import OrderService from "../services/OrderService";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { SubmitButton } from "../components";
 
 const Checkout = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [cep, setCEP] = useState("");
   const [street, setStreet] = useState("");
   const [streetNumber, setStreetNumber] = useState("");
@@ -173,10 +175,13 @@ const Checkout = () => {
           <label className="checkout-label">
             Telefone:
             <br />
-            <input
-              className="checkout-input"
-              type="text"
-            />
+            <input className="checkout-input" type="text" />
+          </label>
+          <SubmitButton
+            isLoading={isLoading}
+            title="RESERVAR PEDIDO"
+            className="checkout-btn"
+          />
           </label>
           <button id="checkout-button" onClick={() => {handleSubmitPurchase()}}>RESERVAR PEDIDO</button>
         </div>
