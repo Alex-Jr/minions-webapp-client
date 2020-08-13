@@ -58,7 +58,13 @@ const Cart = () => {
                     src={process.env.PUBLIC_URL + "/svg/minus.svg"}
                     alt="minus-icon"
                     className="cart-svg"
-                    onClick={() => {handleQuantityChange(product.productId, -1)}}
+                    onClick={() => {
+                      if(product.quantity - 1 === 0) {
+                        handleRemoveProduct(product.productId)
+                      } else {
+                        handleQuantityChange(product.productId, -1)
+                      }
+                    }}
                   />
                   {product.quantity}
                   <img
