@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Auth } from "aws-amplify";
 import { useHistory } from "react-router-dom";
 
+import { SubmitButton } from "../components";
 import "./Signin.css";
 
 const passwordTooltip = `
@@ -14,6 +15,7 @@ const passwordTooltip = `
 `;
 
 const Signin = () => {
+  const [isLoading, setIsLoading] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
@@ -28,15 +30,15 @@ const Signin = () => {
   }, [password, passwordTwo]);
 
   const handleSubmit = async (event) => {
-    if (!passwordMatch) {
+    event.preventDefault();
       alert("As senhas precisam ser iguais");
       return;
     }
-    event.preventDefault();
+    setIsLoading(true);
     await Auth.signUp(email, password)
       .then(() => {
-        alert(`Um email de confirmação foi enviado para ${email}`)
-        history.push('/login')
+        alert(`Um email de confirmação foi enviado para ${email}`);
+        history.push("/login");
       })
       .catch((err) => {
         if (err.code === "UsernameExistsException") {
@@ -46,6 +48,7 @@ const Signin = () => {
           history.goBack();
         }
       });
+    setIsLoading(false);
   };
 
   return (
@@ -94,7 +97,7 @@ const Signin = () => {
             }}
           />
         </label>
-        <input type="submit" value="Confirmar" className="signin-input" />
+        <SubmitButton isLoading={isLoading} title="Confirmar" />
       </form>
     </div>
   );

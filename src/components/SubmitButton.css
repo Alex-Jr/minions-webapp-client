@@ -1,0 +1,22 @@
+#submitButton{
+  margin: 15px auto;
+  font-size: 25px;
+  width:100%;
+  padding: 3px 0;
+}
+
+#submitButtonRefreshIcon {
+  width: 20px;
+  margin-left: -40px;
+  margin-right: 20px;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}

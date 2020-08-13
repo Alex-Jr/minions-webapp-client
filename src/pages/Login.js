@@ -4,9 +4,11 @@ import { Auth } from "aws-amplify";
 import { useHistory } from "react-router-dom";
 
 import { login, singout } from "../redux/actions/user";
+import { SubmitButton } from "../components";
 import "./Login.css";
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,6 +17,7 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true)
     await Auth.signIn(email, password)
       .then((cognitoUser) => {
         dispatch(login(cognitoUser.attributes))
@@ -24,6 +27,7 @@ const Login = () => {
         dispatch(singout())
         alert(err.message)
       });
+    setIsLoading(true)
   };
 
   return (
@@ -53,7 +57,7 @@ const Login = () => {
             }}
           />
         </label>
-        <input type="submit" value="Confirmar" className="login-input" />
+        <SubmitButton isLoading={isLoading} title="Confirmar"/>
       </form>
     </div>
   );
