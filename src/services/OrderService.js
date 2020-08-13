@@ -13,7 +13,7 @@ export default {
         return data;
       })
       .catch((err) => {
-        return;
+        return null;
       });
   },
   postOrders: async (order) => {

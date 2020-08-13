@@ -55,6 +55,10 @@ const Checkout = () => {
   useEffect(() => {
     if (cep.length === 8) {
       OrderService.getAddress(cep).then((fullAddress) => {
+        if(!fullAddress) {
+          alert("CEP Não encontrado");
+          return
+        }
         setStreet(fullAddress.logradouro);
         setNeighborhood(fullAddress.bairro);
         setCity(fullAddress.localidade);
