@@ -1,4 +1,4 @@
-import { ADD_TO_CART, UPDATE_CART, REEMOVE_FROM_CART } from "../actions/cart";
+import { ADD_TO_CART, UPDATE_CART, REMOVE_FROM_CART } from "../actions/cart";
 
 const initialState = {
   count : 0,
@@ -31,7 +31,7 @@ const cartReducer = (state = initialState, action) => {
         totalPrice: state.totalPrice + newProductsList[action.productId].price * action.newQuantity 
       };
 
-    case REEMOVE_FROM_CART:
+    case REMOVE_FROM_CART:
       const newProductList = state.products
       const { quantity, price } = newProductList[action.productId]
       delete newProductList[action.productId] 

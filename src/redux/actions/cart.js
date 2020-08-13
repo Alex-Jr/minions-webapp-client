@@ -1,6 +1,6 @@
 export const ADD_TO_CART = "ADDTOCART";
 export const UPDATE_CART = "UPDATECART";
-export const REEMOVE_FROM_CART = "REMOVEFROMCART";
+export const REMOVE_FROM_CART = "REMOVEFROMCART";
 
 export const addtocart = (product) => {
   return { type: ADD_TO_CART, product: product};
@@ -11,7 +11,7 @@ export const updatecart = (productId, newQuantity) => {
 };
 
 export const removefromcart = (productId) => {
-  return { type: REEMOVE_FROM_CART, productId: productId };
+  return { type: REMOVE_FROM_CART, productId: productId };
 };
 
 
