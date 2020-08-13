@@ -19,18 +19,12 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
-  const [passwordMatch, setPasswordMatch] = useState(false);
 
   const history = useHistory();
 
-  useEffect(() => {
-    if (password === passwordTwo) {
-      setPasswordMatch(true);
-    }
-  }, [password, passwordTwo]);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (password !== passwordTwo) {
       alert("As senhas precisam ser iguais");
       return;
     }
@@ -87,8 +81,6 @@ const Signin = () => {
           <br />
           <input
             required={true}
-            title={passwordTooltip}
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
             className="signin-input"
             type="password"
             value={passwordTwo}
