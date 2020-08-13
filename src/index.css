@@ -18,3 +18,16 @@ input[type=password],
 input[type=email] {
     box-sizing : border-box;
 }
+
+a:visited{
+  color:white
+}
+
+a:hover{
+  color: rgb(213, 145, 48); 
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}

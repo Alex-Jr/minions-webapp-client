@@ -22,16 +22,6 @@ li{
   list-style: none;
 }
 
-a:visited{
-  color:white
-}
-
-a{
-  color: white;
-  text-decoration: none;
-}
-
-
 #cartContainer{
   display: flex;
 }
