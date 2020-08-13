@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { Home, Login, ProductList, Product, Cart, Checkout } from "./pages";
+import { Home, Login, ProductList, Product, Cart, Checkout, Signin } from "./pages";
 import NavBar from "./components/NavBar";
 
 export default (props) => {
@@ -13,6 +13,9 @@ export default (props) => {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/signin">
+          <Signin />
         </Route>
         <Route exact path="/product">
           <ProductList />

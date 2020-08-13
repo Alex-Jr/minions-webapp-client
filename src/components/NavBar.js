@@ -56,6 +56,8 @@ export default (props) => {
           <div className="nav-btn">
             {cartIcon}
             <li>Cadastro</li>
+              <NavLink to="/signin">Cadastro</NavLink>
+            </li>
             <li>
               <NavLink to="/login">Login</NavLink>
             </li>

@@ -1,0 +1,26 @@
+#signin-page{
+  margin-top: 13%
+}
+
+#signin-form{
+  background-color: #252525;
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px 15px
+}
+
+.signin-label{
+  font-size: 25px;
+  margin: 15px 0;
+  color: white
+}
+
+.signin-input{
+  margin: 15px auto;
+  font-size: 25px;
+  height: 40px;
+  width:100%;
+} 
