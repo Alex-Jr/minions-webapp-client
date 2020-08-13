@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
 import "./ProductList.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ProductServices from "../services/ProductServices";
 
-const ProductList = () => {
+const ProductsList = () => {
   const [productListData, setProdcutListData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-
+  const {state} = useLocation()
   useEffect(() => {
     if(isLoading){
-      ProductServices.getProductList("miniatura").then((data) => {
+      ProductServices.getProductList(state === null ? "roupa" : state.category).then((data) => {
         setProdcutListData(data)
         setIsLoading(false)
       })
     }
-  },[isLoading])
+  },[isLoading, state])
 
   return (
     <div id="productList-page">
       <div id="productList-grid">
         {productListData.map((product, index) => {
           return (
-            <Link to={"/product/" + product.productId} key={index}>
+            <Link to={"/products/" + product.productId} key={index}>
               <div className="productList-productContainer">
                 <img src={product.url} alt={product.name} className="productList-productImg"></img>
                 <p className="productList-productName productList-text">{product.name}</p>
@@ -35,4 +35,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default ProductsList;

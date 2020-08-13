@@ -7,7 +7,7 @@ import ProductServices from "../services/ProductServices";
 import { addtocart } from "../redux/actions/cart";
 import FormatPrice from "../Utils/FormatPrice";
 
-const Product = () => {
+const Products = () => {
   let { id } = useParams();
   const [productInfo, setProductInfo] = useState();
   const dispatch = useDispatch();
@@ -57,4 +57,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Products;
