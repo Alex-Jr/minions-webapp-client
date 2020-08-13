@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Auth } from "aws-amplify";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import { SubmitButton } from "../components";
 import "./Signin.css";
@@ -89,6 +89,7 @@ const Signin = () => {
             }}
           />
         </label>
+        <Link to="/login" className="link-inverted">Já tem conta?</Link>
         <SubmitButton isLoading={isLoading} title="Confirmar" />
       </form>
     </div>

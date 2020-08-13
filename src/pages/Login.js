@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Auth } from "aws-amplify";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import { login, singout } from "../redux/actions/user";
 import { SubmitButton } from "../components";
@@ -57,8 +57,10 @@ const Login = () => {
             }}
           />
         </label>
+        <Link to="/signin" className="link-inverted">Ainda não tem conta?</Link>
         <SubmitButton isLoading={isLoading} title="Confirmar"/>
       </form>
+      
     </div>
   );
 };
