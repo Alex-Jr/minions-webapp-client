@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 import "./Checkout.css";
 import FormatNumber from "../Utils/FormatNumber";
 import OrderService from "../services/OrderService";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SubmitButton } from "../components";
+import { clearcart } from "../redux/actions/cart";
 
 const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,6 +22,7 @@ const Checkout = () => {
   const cart = useSelector((state) => state.cartReducer);
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (Object.values(cart.products).length === 0) history.push("/");
@@ -50,7 +52,9 @@ const Checkout = () => {
     };
     await OrderService.postOrders(order).then((response) => {
       if ("orderId" in response) {
-        history.push("/orderSucessful", { orderId: response.orderId });
+        alert("Pedido realizado com sucesso")
+        dispatch(clearcart())
+        history.push("/");
       } else {
         alert("Falha ao realizar pedido!");
       }

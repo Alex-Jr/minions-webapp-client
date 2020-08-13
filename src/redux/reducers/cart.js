@@ -1,4 +1,4 @@
-import { ADD_TO_CART, UPDATE_CART, REMOVE_FROM_CART } from "../actions/cart";
+import { ADD_TO_CART, UPDATE_CART, REMOVE_FROM_CART, CLEAR_CART } from "../actions/cart";
 
 const initialState = {
   count : 0,
@@ -41,6 +41,13 @@ const cartReducer = (state = initialState, action) => {
         products: newProductList,
         totalPrice: state.totalPrice - (quantity * price)
       };
+
+    case CLEAR_CART:
+      return {
+        count: 0,
+        products: {},
+        totalPrice: 0
+      }
 
     default:
       return state;
