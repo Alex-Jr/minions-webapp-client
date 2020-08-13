@@ -26,17 +26,19 @@ const Checkout = () => {
 
   useEffect(() => {
     if (Object.values(cart.products).length === 0) history.push("/");
-  });
+  },[cart, history]);
 
   const handleCepChange = (cep) => {
     setCEP(FormatNumber(cep));
   };
 
-  const handleSubmitPurchase = async () => {
+  const handleSubmitPurchase = async (event) => {
+    event.preventDefault()
     if (!user.logged) {
       history.push("/login");
       return;
     }
+    setIsLoading(true)
     const order = {
       userId: user.userId,
       email: user.email,
@@ -59,6 +61,7 @@ const Checkout = () => {
         alert("Falha ao realizar pedido!");
       }
     });
+    setIsLoading(false)
   };
 
   useEffect(() => {
@@ -80,8 +83,8 @@ const Checkout = () => {
     <div id="checkout-page">
       <form
         id="checkout-grid"
-        onSubmit={() => {
-          handleSubmitPurchase();
+        onSubmit={(event) => {
+          handleSubmitPurchase(event);
         }}
       >
         <div id="checkout-addressContainer">
