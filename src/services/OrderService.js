@@ -22,7 +22,7 @@ export default {
       });
   },
   postOrders: async (order) => {
-    return await API.post(APINAME, `orders`, { body: order })
+    return await API.post(APINAME, `/orders`, { body: order })
       .then((response) => {
         return response;
       })
@@ -31,25 +31,23 @@ export default {
       });
   },
   getOrdersList: async (userId) => {
-    return await API.get(APINAME, `orders?userId=${userId}`)
+    return await API.get(APINAME, `/orders?userId=${userId}`)
       .then((response) => {
         if (!Array.isArray(response))
           throw new Error("Nenhum pedido foi encontrado");
         return response;
       })
       .catch((err) => {
-        console.log(err);
         return [];
       });
   },
   getOrders: async (orderId) => {
-    return await API.get(APINAME, `orders/${orderId}`)
+    return await API.get(APINAME, `/orders/${orderId}`)
       .then((response) => {
         if ("message" in response || response === "no data") throw new Error("Nenhum pedido foi encontrado");
         return response;
       })
       .catch((err) => {
-        console.log(err);
         return {};
       });
   },

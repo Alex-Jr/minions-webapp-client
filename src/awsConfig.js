@@ -6,12 +6,12 @@ export default {
   orders_apiGateway: {
     REGION: "us-east-1",
     NAME: "prod-minions-webapp-orders-api",
-    URL: "https://0i1gl8qra7.execute-api.us-east-1.amazonaws.com/prod/",
+    URL: "https://0i1gl8qra7.execute-api.us-east-1.amazonaws.com/prod",
   },
   products_apiGateway: {
     REGION: "us-east-1",
     NAME: "prod-minions-webapp-products-api",
-    URL: "https://zirgcl1e7a.execute-api.us-east-1.amazonaws.com/prod/",
+    URL: "https://zirgcl1e7a.execute-api.us-east-1.amazonaws.com/prod",
   },
   cognito: {
     REGION: "us-east-1",
