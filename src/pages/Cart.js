@@ -40,9 +40,9 @@ const Cart = () => {
           <tr>
             <th>Imagem</th>
             <th>Produto</th>
-            <th className="cart-productPrice">Valor Uninário</th>
+            <th className="cart-mobileStyle">Valor Uninário</th>
             <th>Quantidade</th>
-            <th className="cart-subTotal">SubTotal</th>
+            <th className="cart-mobileStyle">SubTotal</th>
           </tr>
         </thead>
         <tbody id="cart-tableBody">
@@ -67,7 +67,7 @@ const Cart = () => {
                     }}
                   />
                 </th>
-                <th className="cart-productPrice">{FormatPrice(product.price)}</th>
+                <th className="cart-mobileStyle">{FormatPrice(product.price)}</th>
                 <th>
                   <img
                     src={process.env.PUBLIC_URL + "/svg/minus.svg"}
@@ -91,7 +91,7 @@ const Cart = () => {
                     }}
                   />
                 </th>
-                <th className="cart-subTotal">{FormatPrice(product.price * product.quantity)}</th>
+                <th className="cart-mobileStyle">{FormatPrice(product.price * product.quantity)}</th>
               </tr>
             );
           })}

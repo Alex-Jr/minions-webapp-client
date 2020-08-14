@@ -34,6 +34,9 @@ li {
 }
 
 @media only screen and (max-width: 499px) {
+  ul{
+    padding-inline-start: 20px;
+  }
   nav{
     font-size: 13px;
   }
@@ -56,6 +59,11 @@ li {
     font-size:14px;
     padding:1px 5px 0 5px;
     margin-left: -5px
-
+  }
+  #shoppingCartIcon {
+    margin-top: 0px;
+    width: 23px;
+    height: 23px;
+    fill: white;
   }
 }

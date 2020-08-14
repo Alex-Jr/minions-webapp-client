@@ -51,7 +51,7 @@ export default (props) => {
               <NavLink to="/">Sair</NavLink>
             </li>
             <li>
-              <NavLink to="/orders">Meus pedidos</NavLink>
+              <NavLink to="/orders">Pedidos</NavLink>
             </li>
           </div>
         ) : (

@@ -61,8 +61,8 @@
   margin: 0 5px;
 }
 @media only screen and (max-width: 850px) {
-  .cart-productPrice{
-    display: none
+  .cart-mobileStyle{
+    display: none;
   }
   .cart-productImg{
     width: 125px;
@@ -75,7 +75,11 @@
 }
 
 @media only screen and (max-width: 550px) {
-  .cart-productSubtotal{
-    display: none;
+  .cart-productImg{
+    width: 100px;
+    height: 100px;
+  }
+  #cart-tableHeader tr th {
+    padding: 10px 5px;
   }
 }
