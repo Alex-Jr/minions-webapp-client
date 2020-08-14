@@ -57,10 +57,10 @@ const Login = () => {
             }}
           />
         </label>
-        <Link to="/signin" className="link-inverted">
+        <Link to="/signin">
           Ainda não tem conta?
         </Link>
-        <SubmitButton isLoading={isLoading} title="Confirmar" />
+        <SubmitButton isLoading={isLoading} title="Entrar" />
       </form>
     </div>
   );

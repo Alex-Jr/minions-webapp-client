@@ -26,7 +26,8 @@ const Checkout = () => {
 
   useEffect(() => {
     if (Object.values(cart.products).length === 0) history.push("/");
-  },[cart, history]);
+    if (!user.logged) history.push("/cart")
+  },[cart, history, user]);
 
   const handleCepChange = (cep) => {
     setCEP(FormatNumber(cep));
@@ -34,10 +35,6 @@ const Checkout = () => {
 
   const handleSubmitPurchase = async (event) => {
     event.preventDefault()
-    if (!user.logged) {
-      history.push("/login");
-      return;
-    }
     setIsLoading(true)
     const order = {
       userId: user.userId,

@@ -30,12 +30,14 @@ const ProductsList = () => {
                   alt={product.name}
                   className="productList-productImg"
                 ></img>
-                <p className="productList-productName productList-text">
-                  {product.name}
-                </p>
-                <p className="productList-productPrice productList-text">
-                  R$ {product.price}
-                </p>
+                <div>
+                  <div className="productList-textWhite productList-text">
+                    {product.name}
+                  </div>
+                  <div className="productList-productPrice productList-text">
+                    R$ {product.price}
+                  </div>
+                </div>
               </div>
             </Link>
           );

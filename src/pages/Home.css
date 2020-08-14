@@ -3,7 +3,7 @@
 }
 
 #home-slideshow {
-  height: 550px;
+  height: 650px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,9 +16,10 @@
 
 .home-arrowBtn {
   position: absolute;
-  border-radius: 100%;
-  padding-top: 5px;
-  padding-bottom: 2px;
+  background-color: transparent;
+  border: 0;
+  margin: 0 -20px;
+  padding: 5px 2px 0 7px;
   outline: none;
 }
 
@@ -38,12 +39,13 @@
 #home-categoryContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin-top: 10em;
+  justify-content: space-evenly;
+  margin-top: 10%;
 }
 
 #home-minionCategory {
-  height: 300px;
+  padding-top: 50px;
+  height: 350px;
 }
 
 #home-categories {
@@ -53,9 +55,29 @@
 }
 
 .home-category {
-  background-color: #353535;
+  background-color: #151515;
   width: 300px;
-  padding: 20px 15px;
-  color: white;
-  font-size: 20px;
+  padding-top: 30px;
+  padding-left: 25px;
+  height: 60px;
+  font-size: 25px;
+  margin: 10px 0;
+  color: white
 }
+
+.home-category:hover {
+  height: 55px;
+  border-bottom: 5px solid rgb(255, 77, 0);
+}
+
+@media only screen and (max-width: 800px) {
+  #home-slideshow {
+    height: 300px;
+  }
+
+  #home-minionCategory {
+    display: none;
+  }
+}
+
+

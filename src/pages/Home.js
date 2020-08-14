@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 
 const slideShowData = [
-  process.env.PUBLIC_URL + "/img/slide1.webp",
-  process.env.PUBLIC_URL + "/img/slide2.jpg",
+  process.env.PUBLIC_URL + "/img/slide0.jpg",
+  process.env.PUBLIC_URL + "/img/slide1.jpg",
 ];
 
 const Home = () => {
@@ -72,38 +72,22 @@ const Home = () => {
             id="home-minionCategory"
           />
           <div id="home-categories">
-            <div className="home-category">
-              <Link
-                to={{ pathname: "/products", state: { category: "miniatura" } }}
-                className="link-inverted"
-              >
-                Miniaturas
-              </Link>
-            </div>
-            <div className="home-category">
-              <Link
-                to={{ pathname: "/products", state: { category: "pelucia" } }}
-                className="link-inverted"
-              >
-                Pelúcia
-              </Link>
-            </div>
-            <div className="home-category">
-              <Link
-                to={{ pathname: "/products", state: { category: "roupa" } }}
-                className="link-inverted"
-              >
-                Roupas
-              </Link>
-            </div>
-            <div className="home-category">
-              <Link
-                to={{ pathname: "/products", state: { category: "misc" } }}
-                className="link-inverted"
-              >
-                Miscelânia
-              </Link>
-            </div>
+            <Link
+              to={{ pathname: "/products", state: { category: "miniatura" } }}
+            >
+              <div className="home-category">Miniaturas</div>
+            </Link>
+            <Link
+              to={{ pathname: "/products", state: { category: "pelucia" } }}
+            >
+              <div className="home-category">Pelúcia</div>
+            </Link>
+            <Link to={{ pathname: "/products", state: { category: "roupa" } }}>
+              <div className="home-category">Roupas</div>
+            </Link>
+            <Link to={{ pathname: "/products", state: { category: "misc" } }}>
+              <div className="home-category">Miscelânia</div>
+            </Link>
           </div>
         </div>
       </section>

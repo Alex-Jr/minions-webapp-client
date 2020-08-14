@@ -34,29 +34,34 @@
 }
 
 .productList-productContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 300px;
-  height: 400px;
-  background-color: #303030;
+  background-color: #151515;
+  width: 260px;
+  height: 350px;
+  padding: 20px;
+}
+
+.productList-productContainer:hover{
+  width: 260px;
+  height: 345px;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 5px solid rgb(255, 77, 0);
+}
+
+.productList-textWhite{
+  color: white
 }
 
 .productList-productImg {
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
 }
 
-.productList-text {
-  padding-left: 25px;
-}
-
-.productList-productName {
-  color: white;
-}
-
-.productList-productPrice {
-  color: white;
+.productList-productPrice  {
+  margin-top: 10px;
+  text-align: end; 
   font-size: 22px;
+  color: rgb(255, 77, 0);
   font-weight: bold;
 }

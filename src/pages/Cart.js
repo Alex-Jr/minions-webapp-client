@@ -8,6 +8,7 @@ import "./Cart.css";
 
 const Cart = () => {
   const { products, totalPrice } = useSelector((state) => state.cartReducer);
+  const { logged } = useSelector((state) => state.userReducer);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -20,6 +21,18 @@ const Cart = () => {
     dispatch(removefromcart(productId));
   };
 
+  const handleFinishPurchase = () => {
+    if(totalPrice === 0) {
+      alert("Seu carrinho está vazio!");
+      return
+    }
+    if(!logged){
+      history.push("/login")
+      return
+    }
+    history.push("/checkout")
+  }
+
   return (
     <div id="cart-page">
       <table id="cart-table">
@@ -27,9 +40,9 @@ const Cart = () => {
           <tr>
             <th>Imagem</th>
             <th>Produto</th>
-            <th>Valor Uninário</th>
+            <th className="cart-productPrice">Valor Uninário</th>
             <th>Quantidade</th>
-            <th>SubTotal</th>
+            <th className="cart-subTotal">SubTotal</th>
           </tr>
         </thead>
         <tbody id="cart-tableBody">
@@ -54,7 +67,7 @@ const Cart = () => {
                     }}
                   />
                 </th>
-                <th>{FormatPrice(product.price)}</th>
+                <th className="cart-productPrice">{FormatPrice(product.price)}</th>
                 <th>
                   <img
                     src={process.env.PUBLIC_URL + "/svg/minus.svg"}
@@ -78,7 +91,7 @@ const Cart = () => {
                     }}
                   />
                 </th>
-                <th>{FormatPrice(product.price * product.quantity)}</th>
+                <th className="cart-subTotal">{FormatPrice(product.price * product.quantity)}</th>
               </tr>
             );
           })}
@@ -91,7 +104,7 @@ const Cart = () => {
         <button
           id="cart-finishPurchaseBtn"
           onClick={() => {
-            history.push("/checkout");
+            handleFinishPurchase()
           }}
         >
           FINALIZAR COMPRA

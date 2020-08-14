@@ -12,7 +12,7 @@
 
   .product-imgContainer,
   .product-textContainer {
-    background-color: #303030;
+    background-color: #151515;
     color: white;
   }
 
@@ -49,7 +49,8 @@
   #product-price {
     font-size: 24px;
     font-weight: bold;
-    color: rgb(213, 145, 48);
+    color: rgb(255, 77, 0); 
+    text-align: end;
   }
 
   #product-addtocartBtn {
@@ -57,5 +58,50 @@
     width: 100%;
     padding: 10px 0;
     align-self: flex-end;
+  }
+}
+
+@media only screen and (max-width: 799px) {
+  #product-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px
+  }
+
+  #product-infoContainer {
+    background-color: #151515;
+  }
+
+  .product-textContainer {
+    padding: 15px 15px;
+    color: white
+  }
+
+  #product-img {
+    width: 325px;
+    height: 325px;
+   
+  }
+
+  #product-name {
+    font-size: 22px
+  }
+
+  #product-desc {
+    margin: 5px 0
+  }
+
+  #product-price {
+    text-align: end;
+    color: rgb(255, 77, 0);
+    font-size: 25px;
+    margin: 5px 0;
+  }
+
+  #product-addtocartBtn {
+    width: 100%;
+    padding: 10px;
   }
 }

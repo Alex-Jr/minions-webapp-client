@@ -2,7 +2,7 @@ nav {
   width: 100%;
   padding-top: 0.4em;
   padding-bottom: 0.4em;
-  background-color: #303030;
+  background-color: #151515;
 }
 
 #nav-list {
@@ -27,26 +27,35 @@ li {
 }
 
 #shoppingCartIcon {
-  margin-top: -7px;
+  margin-top: -3px;
   width: 27px;
   height: 27px;
   fill: white;
 }
 
-@media only screen and (max-width: 549px) {
+@media only screen and (max-width: 499px) {
+  nav{
+    font-size: 13px;
+  }
   #cartCount {
     display: none;
   }
 }
 
-@media only screen and (min-width: 550px) {
-  #cartCount {
-    background-color: red;
-    color: black;
-    padding: 3px;
-    border-radius: 100px;
+@media only screen and (max-width: 399px) {
+  nav{
     font-size: 12px;
-    margin-left: -5px;
-    margin-top: -2px;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  #cartCount {
+    background-color: rgb(255,77,0);
+    color: black;
+    border-radius: 100px;
+    font-size:14px;
+    padding:1px 5px 0 5px;
+    margin-left: -5px
+
   }
 }
