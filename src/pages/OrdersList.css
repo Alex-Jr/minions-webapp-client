@@ -1,0 +1,37 @@
+#orders-page {
+  padding-top: 25px;
+}
+
+#orders-table {
+  color: white;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+#orders-tableHeader {
+  background-color: rgb(255, 77, 0);
+  color: black;
+}
+
+#orders-tableHeader tr th {
+  width: 115px;
+  padding: 10px 25px;
+}
+
+#orders-tableBody tr {
+  background-color: #151515;
+}
+#orders-tableBody tr:nth-of-type(2) {
+  background-color: #181818
+}
+
+#orders-tableBody th {
+  padding: 25px 30px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .orders-tablePrice{
+    display: none;
+  }
+}

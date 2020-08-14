@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import "./Orders.css";
+import "./OrdersList.css";
 import OrderService from "../services/OrderService";
 import FormatPrice from "../Utils/FormatPrice";
 import { Link } from "react-router-dom";
 
-const Orders = () => {
+const OrdersList = () => {
   const [ordersData, setOrdersData] = useState([]);
 
   const { userId } = useSelector((state) => state.userReducer);
@@ -26,7 +26,7 @@ const Orders = () => {
           <tr>
             <th>PEDIDO</th>
             <th>DATA</th>
-            <th>VALOR</th>
+            <th className="orders-tablePrice">VALOR</th>
             <th>AÇÕES</th>
           </tr>
         </thead>
@@ -42,7 +42,7 @@ const Orders = () => {
                   <Link to={`/orders/${order.orderId}`}>{order.orderId}</Link>
                 </th>
                 <th>{convertedDate}</th>
-                <th>{FormatPrice(order.totalPrice)}</th>
+                <th className="orders-tablePrice">{FormatPrice(order.totalPrice)}</th>
                 <th>
                   <Link to={`/orders/${order.orderId}`}>Visualizar</Link>
                 </th>
@@ -55,4 +55,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default OrdersList;

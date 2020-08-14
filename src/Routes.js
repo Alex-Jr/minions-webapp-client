@@ -8,7 +8,7 @@ import {
   Cart,
   Checkout,
   Signin,
-  Orders,
+  OrdersList,
 } from "./pages";
 import NavBar from "./components/NavBar";
 
@@ -39,8 +39,11 @@ export default (props) => {
           <Checkout />
         </Route>
         <Route exact path="/orders">
-          <Orders />
+          <OrdersList />
         </Route>
+        <Route>
+          <Home />
+        </Route> 
       </Switch>
     </Router>
   );
