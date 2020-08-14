@@ -8,12 +8,17 @@ export default {
     return await fetch(`https://viacep.com.br/ws/${cep}/json`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        if ("erro" in data) throw new Error("CEP Não encontrado");
+        if ("erro" in data) throw new Error();
         return data;
       })
       .catch((err) => {
-        return null;
+        alert("CEP não encontrado")
+        return {
+          logradouro: "",
+          bairro: "",
+          localidade: "",
+          uf: "",
+        };
       });
   },
   postOrders: async (order) => {

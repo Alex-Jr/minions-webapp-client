@@ -26,16 +26,12 @@ const Checkout = () => {
 
   useEffect(() => {
     if (Object.values(cart.products).length === 0) history.push("/");
-    if (!user.logged) history.push("/cart")
-  },[cart, history, user]);
-
-  const handleCepChange = (cep) => {
-    setCEP(FormatNumber(cep));
-  };
+    if (!user.logged) history.push("/cart");
+  }, [cart, history, user]);
 
   const handleSubmitPurchase = async (event) => {
-    event.preventDefault()
-    setIsLoading(true)
+    event.preventDefault();
+    setIsLoading(true);
     const order = {
       userId: user.userId,
       email: user.email,
@@ -51,28 +47,29 @@ const Checkout = () => {
     };
     await OrderService.postOrders(order).then((response) => {
       if ("orderId" in response) {
-        alert("Pedido realizado com sucesso")
-        dispatch(clearcart())
+        alert("Pedido realizado com sucesso");
+        dispatch(clearcart());
         history.push("/");
       } else {
         alert("Falha ao realizar pedido!");
       }
     });
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    if (cep.length === 8) {
-      OrderService.getAddress(cep).then((fullAddress) => {
-        if (!fullAddress) {
-          alert("CEP Não encontrado");
-          return;
-        }
-        setStreet(fullAddress.logradouro);
-        setNeighborhood(fullAddress.bairro);
-        setCity(fullAddress.localidade);
-        setUf(fullAddress.uf);
-      });
+    if(cep.length !== 9) return;
+    const regex =  new RegExp("^([0-9]{5})-([0-9]{3})");
+    if (regex.test(cep)) {
+      OrderService.getAddress(cep.replace("-",""))
+        .then((fullAddress) => {
+          setStreet(fullAddress.logradouro);
+          setNeighborhood(fullAddress.bairro);
+          setCity(fullAddress.localidade);
+          setUf(fullAddress.uf);
+        })
+    } else {
+      alert("CEP Inválido")
     }
   }, [cep]);
 
@@ -94,9 +91,9 @@ const Checkout = () => {
               className="checkout-input"
               type="text"
               value={cep}
-              maxLength={8}
+              maxLength={9}
               onChange={(event) => {
-                handleCepChange(event.target.value);
+                setCEP(event.target.value);
               }}
             />
           </label>
