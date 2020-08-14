@@ -1,0 +1,27 @@
+#orders-page{
+  margin-bottom: 25px;
+}
+
+#orders-container{
+  background-color: #151515;
+  color: white;
+  margin: 0 auto;
+  width: 50%;
+  padding: 25px;
+}
+
+#orders-container h1{
+  color: rgb(255, 77, 0)
+}
+
+#orders-container h2{
+  text-align: end;
+}
+
+#orders-container p{
+  font-size: 22px;
+}
+
+#product-container {
+  font-size: 18px
+}

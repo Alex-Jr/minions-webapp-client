@@ -9,6 +9,7 @@ import {
   Checkout,
   Signin,
   OrdersList,
+  Orders
 } from "./pages";
 import NavBar from "./components/NavBar";
 
@@ -40,6 +41,9 @@ export default (props) => {
         </Route>
         <Route exact path="/orders">
           <OrdersList />
+        </Route>
+        <Route exact path="/orders/:orderId">
+          <Orders />
         </Route>
         <Route>
           <Home />

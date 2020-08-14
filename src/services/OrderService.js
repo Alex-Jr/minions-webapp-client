@@ -25,7 +25,7 @@ export default {
         return err;
       });
   },
-  getOrders: async (userId) => {
+  getOrdersList: async (userId) => {
     return await API.get(APINAME, `orders?userId=${userId}`)
       .then((response) => {
         if (!Array.isArray(response))
@@ -35,6 +35,17 @@ export default {
       .catch((err) => {
         console.log(err);
         return [];
+      });
+  },
+  getOrders: async (orderId) => {
+    return await API.get(APINAME, `orders/${orderId}`)
+      .then((response) => {
+        if ("message" in response || response === "no data") throw new Error("Nenhum pedido foi encontrado");
+        return response;
+      })
+      .catch((err) => {
+        console.log(err);
+        return {};
       });
   },
 };

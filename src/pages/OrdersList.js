@@ -5,16 +5,17 @@ import "./OrdersList.css";
 import OrderService from "../services/OrderService";
 import FormatPrice from "../Utils/FormatPrice";
 import { Link } from "react-router-dom";
+import FormatDate from "../Utils/FormatDate";
 
 const OrdersList = () => {
-  const [ordersData, setOrdersData] = useState([]);
+  const [ordersListData, setOrdersListData] = useState([]);
 
   const { userId } = useSelector((state) => state.userReducer);
 
   useEffect(() => {
     if (userId !== null) {
-      OrderService.getOrders(userId).then((data) => {
-        setOrdersData(data);
+      OrderService.getOrdersList(userId).then((data) => {
+        setOrdersListData(data);
       });
     }
   }, [userId]);
@@ -31,11 +32,7 @@ const OrdersList = () => {
           </tr>
         </thead>
         <tbody id="orders-tableBody">
-          {ordersData.map((order, index) => {
-            const date = new Date(order.orderedAt);
-            const convertedDate = `${date.getDate()}/${
-              date.getMonth() + 1
-            }/${date.getFullYear()}`;
+          {ordersListData.map((order, index) => {
             return (
               <tr key={index}>
                 <th>
