@@ -41,7 +41,7 @@ const OrdersList = () => {
                 <th>
                   <Link to={`/orders/${order.orderId}`}>{order.orderId}</Link>
                 </th>
-                <th>{convertedDate}</th>
+                <th>{FormatDate(order.orderedAt)}</th>
                 <th className="orders-tablePrice">{FormatPrice(order.totalPrice)}</th>
                 <th>
                   <Link to={`/orders/${order.orderId}`}>Visualizar</Link>
