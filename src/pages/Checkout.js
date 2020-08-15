@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import "./Checkout.css";
-import FormatNumber from "../Utils/FormatNumber";
+import FormatNumber from "../utils/FormatNumber";
 import OrderService from "../services/OrderService";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";

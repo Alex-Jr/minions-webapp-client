@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import OrderService from "../services/OrderService"
-import FormatDate from "../Utils/FormatDate"
-import FormatPrice from "../Utils/FormatPrice"
+import FormatDate from "../utils/FormatDate"
+import FormatPrice from "../utils/FormatPrice"
 import "./Orders.css"
 
 const Orders = () => {

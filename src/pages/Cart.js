@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import FormatPrice from "../Utils/FormatPrice";
+import FormatPrice from "../utils/FormatPrice";
 import { updatecart, removefromcart } from "../redux/actions/cart";
 import "./Cart.css";
 

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 import ProductServices from "../services/ProductServices";
 import { addtocart } from "../redux/actions/cart";
-import FormatPrice from "../Utils/FormatPrice";
+import FormatPrice from "../utils/FormatPrice";
 
 const Products = () => {
   let { id } = useParams();

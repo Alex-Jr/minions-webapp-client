@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 
 import "./OrdersList.css";
 import OrderService from "../services/OrderService";
-import FormatPrice from "../Utils/FormatPrice";
+import FormatPrice from "../utils/FormatPrice";
 import { Link } from "react-router-dom";
-import FormatDate from "../Utils/FormatDate";
+import FormatDate from "../utils/FormatDate";
 
 const OrdersList = () => {
   const [ordersListData, setOrdersListData] = useState([]);
