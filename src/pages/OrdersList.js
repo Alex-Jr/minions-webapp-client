@@ -14,10 +14,14 @@ const OrdersList = () => {
 
   useEffect(() => {
     if (userId !== null) {
-      OrderService.getOrdersList(userId).then((data) => {
-        setOrdersListData(data);
-      });
-    }
+      OrderService.getOrdersList(userId)
+        .then((data) => {
+          setOrdersListData(data);
+        })
+        .catch(() => {
+          setOrdersListData([]);
+        });
+    };
   }, [userId]);
 
   return (
@@ -39,7 +43,9 @@ const OrdersList = () => {
                   <Link to={`/orders/${order.orderId}`}>{order.orderId}</Link>
                 </th>
                 <th>{FormatDate(order.orderedAt)}</th>
-                <th className="orders-tablePrice">{FormatPrice(order.totalPrice)}</th>
+                <th className="orders-tablePrice">
+                  {FormatPrice(order.totalPrice)}
+                </th>
                 <th>
                   <Link to={`/orders/${order.orderId}`}>Visualizar</Link>
                 </th>

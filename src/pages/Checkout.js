@@ -45,31 +45,36 @@ const Checkout = () => {
       products: cart.products,
       totalPrice: cart.totalPrice,
     };
-    await OrderService.postOrders(order).then((response) => {
-      if ("orderId" in response) {
+    await OrderService.postOrders(order)
+      .then(() => {
         alert("Pedido realizado com sucesso");
         dispatch(clearcart());
         history.push("/");
-      } else {
+      })
+      .catch(() => {
         alert("Falha ao realizar pedido!");
-      }
-    });
-    setIsLoading(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
-    if(cep.length !== 9) return;
-    const regex =  new RegExp("^([0-9]{5})-([0-9]{3})");
+    if (cep.length !== 9) return;
+    const regex = new RegExp("^([0-9]{5})-([0-9]{3})");
     if (regex.test(cep)) {
-      OrderService.getAddress(cep.replace("-",""))
+      OrderService.getAddress(cep.replace("-", ""))
         .then((fullAddress) => {
           setStreet(fullAddress.logradouro);
           setNeighborhood(fullAddress.bairro);
           setCity(fullAddress.localidade);
           setUf(fullAddress.uf);
         })
+        .catch(() => {
+          alert("CEP Não encontrado");
+        });
     } else {
-      alert("CEP Inválido")
+      alert("CEP Inválido");
     }
   }, [cep]);
 

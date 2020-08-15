@@ -9,12 +9,13 @@ const Orders = () => {
   const { orderId }  = useParams()
   const [ ordersData, setOrdersData ] = useState(false);
   useEffect(() => {
-    OrderService.getOrders(orderId).then((data) => {
-      if("orderId" in data){
+    OrderService.getOrders(orderId)
+    .then((data) => {
         setOrdersData(data)
-      } else {
-        setOrdersData(false)
-      }
+    })
+    .catch(() => {
+        setOrdersData(false);
+        alert("Pedido não encontrado");
     })
   },[orderId])
 

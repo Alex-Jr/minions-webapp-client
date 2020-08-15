@@ -7,21 +7,15 @@ export default {
   getProductInfo: async (id) => {
     return await API.get(APINAME, `/products/${id}`)
       .then((data) => {
-        if (!data) return null;
+        if (!data) throw new Error();
         return data;
       })
-      .catch((err) => {
-        return null;
-      });
   },
   getProductList: async (category) => {
     return await API.get(APINAME, `/products?category=${category}`)
       .then((data) => {
-        if (!data) return [];
+        if (!data) throw new Error();
         return data;
       })
-      .catch((err) => {
-        return [];
-      });
   },
 };

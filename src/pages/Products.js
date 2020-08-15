@@ -8,18 +8,19 @@ import { addtocart } from "../redux/actions/cart";
 import FormatPrice from "../utils/FormatPrice";
 
 const Products = () => {
-  let { id } = useParams();
   const [productInfo, setProductInfo] = useState();
+  let { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
     ProductServices.getProductInfo(id)
       .then((response) => {
-        if (response) setProductInfo(response);
+        setProductInfo(response);
       })
       .catch((err) => {
-        console.log(err);
+        alert("Produto não encontrado")
+        setProductInfo(false);
       });
   }, [id]);
 

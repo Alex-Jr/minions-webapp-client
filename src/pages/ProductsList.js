@@ -5,18 +5,19 @@ import ProductServices from "../services/ProductServices";
 
 const ProductsList = () => {
   const [productListData, setProdcutListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const { state } = useLocation();
+
   useEffect(() => {
-    if (isLoading) {
-      ProductServices.getProductList(
-        state === null ? "miniatura" : state.category
-      ).then((data) => {
+    ProductServices.getProductList(
+      state === null ? "miniatura" : state.category
+    )
+      .then((data) => {
         setProdcutListData(data);
-        setIsLoading(false);
+      })
+      .catch(() => {
+        setProdcutListData([]);
       });
-    }
-  }, [isLoading, state]);
+  }, [state]);
 
   return (
     <div id="productList-page">
