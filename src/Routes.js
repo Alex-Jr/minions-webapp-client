@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+
 import {
   Home,
   Login,
@@ -11,7 +12,7 @@ import {
   OrdersList,
   Orders
 } from "./pages";
-import NavBar from "./components/NavBar";
+import { NavBar } from "./components";
 
 export default (props) => {
   return (

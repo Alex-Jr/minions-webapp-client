@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-
-import "./Checkout.css";
-import FormatNumber from "../utils/FormatNumber";
-import OrderService from "../services/OrderService";
-import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { SubmitButton } from "../components";
-import { clearcart } from "../redux/actions/cart";
+import { useSelector, useDispatch } from "react-redux";
+
+import FormatNumber from "../../utils/FormatNumber";
+import OrderService from "../../services/OrderService";
+import { SubmitButton } from "../../components";
+import { clearcart } from "../../redux/actions/cart";
+import "./Checkout.css";
 
 const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false);

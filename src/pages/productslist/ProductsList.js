@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./ProductList.css";
 import { Link, useLocation } from "react-router-dom";
-import ProductServices from "../services/ProductServices";
+
+import ProductServices from "../../services/ProductServices";
+import "./ProductsList.css";
 
 const ProductsList = () => {
   const [productListData, setProdcutListData] = useState([]);

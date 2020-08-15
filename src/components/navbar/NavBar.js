@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Auth } from "aws-amplify";
 
+import { singout } from "../../redux/actions/user";
 import "./NavBar.css";
-import { singout } from "../redux/actions/user";
 
 export default (props) => {
   const logged = useSelector((state) => state.userReducer.logged);

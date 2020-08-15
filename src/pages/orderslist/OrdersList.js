@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-
-import "./OrdersList.css";
-import OrderService from "../services/OrderService";
-import FormatPrice from "../utils/FormatPrice";
 import { Link } from "react-router-dom";
-import FormatDate from "../utils/FormatDate";
+
+import OrderService from "../../services/OrderService";
+import FormatPrice from "../../utils/FormatPrice";
+import FormatDate from "../../utils/FormatDate";
+import "./OrdersList.css";
 
 const OrdersList = () => {
   const [ordersListData, setOrdersListData] = useState([]);

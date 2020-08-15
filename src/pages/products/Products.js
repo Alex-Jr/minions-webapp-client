@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./Product.css";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import ProductServices from "../services/ProductServices";
-import { addtocart } from "../redux/actions/cart";
-import FormatPrice from "../utils/FormatPrice";
+import ProductServices from "../../services/ProductServices";
+import FormatPrice from "../../utils/FormatPrice";
+import { addtocart } from "../../redux/actions/cart";
+import "./Products.css";
 
 const Products = () => {
   const [productInfo, setProductInfo] = useState();

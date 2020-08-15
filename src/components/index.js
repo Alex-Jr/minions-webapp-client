@@ -1,2 +1,2 @@
-export { default as NavBar } from "./NavBar";
-export { default as SubmitButton } from "./SubmitButton";
+export { default as NavBar } from "./navbar/NavBar";
+export { default as SubmitButton } from "./submitbutton/SubmitButton";

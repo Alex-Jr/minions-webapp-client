@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Auth } from "aws-amplify";
 import { useHistory, Link } from "react-router-dom";
 
-import { SubmitButton } from "../components";
+import { SubmitButton } from "../../components";
 import "./Signin.css";
 
 const passwordTooltip = `

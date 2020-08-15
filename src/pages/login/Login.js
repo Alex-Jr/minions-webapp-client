@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { Auth } from "aws-amplify";
 import { useHistory, Link } from "react-router-dom";
 
-import { login, singout } from "../redux/actions/user";
-import { SubmitButton } from "../components";
+import { login, singout } from "../../redux/actions/user";
+import { SubmitButton } from "../../components";
 import "./Login.css";
 
 const Login = () => {
