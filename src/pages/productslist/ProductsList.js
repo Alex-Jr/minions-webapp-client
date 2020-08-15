@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import ProductServices from "../../services/ProductServices";
+import FormatPrice from "../../utils/FormatPrice"
 import "./ProductsList.css";
 
 const ProductsList = () => {
@@ -37,7 +38,7 @@ const ProductsList = () => {
                     {product.name}
                   </div>
                   <div className="productList-productPrice productList-text">
-                    R$ {product.price}
+                    {FormatPrice(product.price)}
                   </div>
                 </div>
               </div>

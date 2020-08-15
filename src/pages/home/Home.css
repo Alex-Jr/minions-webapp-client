@@ -1,5 +1,4 @@
 #home-page {
-  padding-bottom: 40px;
 }
 
 #home-categoryContainer {
@@ -42,6 +41,12 @@
 
   .home-category {
     width: 250px;
+    padding: 10px 0 10px 30px;
+    font-size: 25px;
+  }
+
+  .home-category:hover {
+    padding-bottom: 5px;
   }
 }
 

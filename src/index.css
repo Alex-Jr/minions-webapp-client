@@ -13,6 +13,10 @@ code {
     monospace;
 }
 
+div#root{
+  padding-bottom: 25px;
+}
+
 label {
   font-size: 22px;
   color: white;
