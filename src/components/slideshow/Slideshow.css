@@ -1,0 +1,42 @@
+#slideshow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.currentSlideshow{
+  width: 100%;
+  max-height: 650px;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.displayNone{
+  opacity: 0;
+  width: 0%;
+  height: 0%;
+}
+
+.arrowBtn {
+  position: absolute;
+  background-color: transparent;
+  border: 0;
+  margin: 0 -20px;
+  padding: 5px 2px 0 7px;
+  outline: none;
+}
+
+#rightArrowBtn {
+  left: 95%;
+}
+#leftArrowBtn {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  right: 95%;
+}
+
+.arrowSvg {
+  height: 30px;
+}
+

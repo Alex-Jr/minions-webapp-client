@@ -8,7 +8,7 @@ const SubmitButton = ({ isLoading, title, className }) => {
       className={`submitButton ${className}`}
       disabled={isLoading}
     >
-      {!isLoading && (
+      {isLoading && (
         <img
           src={process.env.PUBLIC_URL + "/svg/refresh.svg"}
           alt="refresh-spinning"
