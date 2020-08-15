@@ -24,17 +24,17 @@
 }
 
 #cart-tableBody tr {
-  background-color: #151515;
+  background-color: #101010;
 }
 #cart-tableBody tr:nth-of-type(2) {
-  background-color: #181818;
+  background-color: #131313;
 }
 
 #cart-finishPurchase {
   width: 200px;
   padding: 40px;
   margin: 50px auto;
-  background-color: #151515;
+  background-color: #101010;
 }
 
 #cart-finishPurchaseTotal {

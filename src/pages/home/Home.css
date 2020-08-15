@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 #home-minionCategory {
@@ -20,7 +20,7 @@
 }
 
 .home-category {
-  background-color: #151515;
+  background-color: #101010;
   width: 300px;
   padding: 15px 0 15px 30px;
   font-size: 29px;
@@ -37,6 +37,10 @@
 @media only screen and (max-width: 800px) {
   #home-minionCategory {
     display: none;
+  }
+
+  #home-categories{
+    margin-top: 10%
   }
 
   .home-category {

@@ -19,10 +19,10 @@
 }
 
 #orders-tableBody tr {
-  background-color: #151515;
+  background-color: #101010;
 }
 #orders-tableBody tr:nth-of-type(2) {
-  background-color: #181818
+  background-color: #121212
 }
 
 #orders-tableBody th {
