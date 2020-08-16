@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import FormatNumber from "../../utils/FormatNumber";
 import OrderService from "../../services/OrderService";
 import { SubmitButton } from "../../components";
 import { clearcart } from "../../redux/actions/cart";
+import { useForm } from "../../hooks";
 import "./Checkout.css";
 
 const Checkout = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [cep, setCEP] = useState("");
-  const [street, setStreet] = useState("");
-  const [streetNumber, setStreetNumber] = useState("");
-  const [neighborhood, setNeighborhood] = useState("");
-  const [city, setCity] = useState("");
-  const [uf, setUf] = useState("");
-  const [additional, setAdditional] = useState("");
+  const [{ values, isLoading }, handleChange, handleSubmit] = useForm();
+
+  const [address, setAddress] = useState({
+    street: "",
+    neighborhood: "",
+    city: "",
+    uf: "",
+  });
 
   const user = useSelector((state) => state.userReducer);
   const cart = useSelector((state) => state.cartReducer);
@@ -28,18 +28,10 @@ const Checkout = () => {
     if (Object.values(cart.products).length === 0) history.push("/");
   }, [cart, history]);
 
-  const handleSubmitPurchase = async (event) => {
-    event.preventDefault();
-    setIsLoading(true);
+  const handlePurchase = async () => {
     const order = {
       email: user.email,
-      address: {
-        cep: `${cep}`,
-        street: `${street},${streetNumber}`,
-        neighborhood: `${neighborhood}`,
-        city: `${city} - ${uf}`,
-        additional: `${additional}`,
-      },
+      address: { ...address, ...values },
       products: cart.products,
       totalPrice: cart.totalPrice,
     };
@@ -51,22 +43,23 @@ const Checkout = () => {
       })
       .catch(() => {
         alert("Falha ao realizar pedido!");
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   };
 
   useEffect(() => {
+    const { cep } = values;
+    if (!cep) return;
     if (cep.length !== 9) return;
     const regex = new RegExp("^([0-9]{5})-([0-9]{3})");
     if (regex.test(cep)) {
       OrderService.getAddress(cep.replace("-", ""))
         .then((fullAddress) => {
-          setStreet(fullAddress.logradouro);
-          setNeighborhood(fullAddress.bairro);
-          setCity(fullAddress.localidade);
-          setUf(fullAddress.uf);
+          setAddress({
+            street: fullAddress.logradouro,
+            neighborhood: fullAddress.bairro,
+            city: fullAddress.localidade,
+            uf: fullAddress.uf,
+          });
         })
         .catch(() => {
           alert("CEP Não encontrado");
@@ -74,16 +67,11 @@ const Checkout = () => {
     } else {
       alert("CEP Inválido");
     }
-  }, [cep]);
+  }, [values]);
 
   return (
     <div id="checkout-page">
-      <form
-        id="checkout-grid"
-        onSubmit={(event) => {
-          handleSubmitPurchase(event);
-        }}
-      >
+      <form id="checkout-grid" onSubmit={handleSubmit(handlePurchase)}>
         <div id="checkout-addressContainer">
           <h1 className="checkout-title">Dados de Entrega</h1>
           <label className="checkout-label">
@@ -93,11 +81,9 @@ const Checkout = () => {
               required={true}
               className="checkout-input"
               type="text"
-              value={cep}
+              name="cep"
               maxLength={9}
-              onChange={(event) => {
-                setCEP(event.target.value);
-              }}
+              onChange={handleChange}
             />
           </label>
           <label className="checkout-label checkout-float">
@@ -106,7 +92,7 @@ const Checkout = () => {
             <input
               className="checkout-input"
               type="text"
-              value={street}
+              value={address.street}
               disabled
             />
           </label>
@@ -116,10 +102,8 @@ const Checkout = () => {
             <input
               className="checkout-input checkout-small"
               type="text"
-              value={streetNumber}
-              onChange={(event) => {
-                setStreetNumber(FormatNumber(event.target.value));
-              }}
+              name="streetNumber"
+              onChange={handleChange}
             />
           </label>
           <label className="checkout-label">
@@ -128,7 +112,7 @@ const Checkout = () => {
             <input
               className="checkout-input"
               type="text"
-              value={neighborhood}
+              value={address.neighborhood}
               disabled
             />
           </label>
@@ -138,7 +122,7 @@ const Checkout = () => {
             <input
               className="checkout-input"
               type="text"
-              value={city}
+              value={address.city}
               disabled
             />
           </label>
@@ -148,7 +132,7 @@ const Checkout = () => {
             <input
               className="checkout-input checkout-small"
               type="text"
-              value={uf}
+              value={address.uf}
               disabled
             />
           </label>
@@ -158,10 +142,8 @@ const Checkout = () => {
             <input
               className="checkout-input"
               type="text"
-              value={additional}
-              onChange={(event) => {
-                setAdditional(event.target.value);
-              }}
+              name="additional"
+              onChange={handleChange}
             />
           </label>
         </div>

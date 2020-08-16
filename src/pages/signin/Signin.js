@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Auth } from "aws-amplify";
 import { useHistory, Link } from "react-router-dom";
 
 import { SubmitButton } from "../../components";
 import "./Signin.css";
+import { useForm } from "../../hooks";
 
 const passwordTooltip = `
   A senha precisa conter:
@@ -15,20 +16,16 @@ const passwordTooltip = `
 `;
 
 const Signin = () => {
-  const [isLoading, setIsLoading] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordTwo, setPasswordTwo] = useState("");
+  const [{ values, isLoading }, handleChange, handleSubmit] = useForm();
 
   const history = useHistory();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSignin = async () => {
+    const { email, password, passwordTwo } = values
     if (password !== passwordTwo) {
       alert("As senhas precisam ser iguais");
       return;
     }
-    setIsLoading(true);
     await Auth.signUp(email, password)
       .then(() => {
         alert(`Um email de confirmação foi enviado para ${email}`);
@@ -42,51 +39,44 @@ const Signin = () => {
           history.goBack();
         }
       });
-    setIsLoading(false);
   };
 
   return (
     <div id="signin-page">
-      <form onSubmit={handleSubmit} id="signin-form">
+      <form onSubmit={handleSubmit(handleSignin)} id="signin-form">
         <label className="signin-label">
           Email:
           <br />
           <input
-            required={true}
+            required
             className="signin-input"
             type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            name="email"
+            onChange={handleChange}
           />
         </label>
         <label className="signin-label">
           Senha:
           <br />
           <input
-            required={true}
+            required
             title={passwordTooltip}
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
             className="signin-input"
             type="password"
-            value={password.toString()}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            name="password"
+            onChange={handleChange}
           />
         </label>
         <label className="signin-label">
           Confirmar Senha:
           <br />
           <input
-            required={true}
+            required
             className="signin-input"
             type="password"
-            value={passwordTwo}
-            onChange={(e) => {
-              setPasswordTwo(e.target.value);
-            }}
+            name="passwordTwo"
+            onChange={handleChange}
           />
         </label>
         <Link to="/login">
