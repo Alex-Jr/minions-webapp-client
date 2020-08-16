@@ -32,7 +32,7 @@ input.checkout-small {
 
 .checkout-btn {
   width: 100%;
-  margin-top: 143px;
+  margin-top: 235px;
   padding: 5px 12px;
   font-size: 22px;
   background-color: rgb(255, 77, 0);
@@ -42,7 +42,7 @@ input.checkout-small {
   #checkout-grid {
     display: grid;
     grid-template-columns: 300px;
-    grid-template-rows: 400px 340px;
+    grid-template-rows: 400px 285px;
   }
   .checkout-title{
     font-size: 20px

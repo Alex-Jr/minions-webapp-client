@@ -31,7 +31,7 @@ const Checkout = () => {
   const handlePurchase = async () => {
     const order = {
       email: user.email,
-      address: { ...address, ...values },
+      deliveryInfo: { ...address, ...values },
       products: cart.products,
       totalPrice: cart.totalPrice,
     };
@@ -99,6 +99,7 @@ const Checkout = () => {
             N°:
             <br />
             <input
+              required
               className="checkout-input checkout-small"
               type="text"
               name="streetNumber"
@@ -149,9 +150,15 @@ const Checkout = () => {
         <div id="checkout-paymentMethod">
           <h1 className="checkout-title">Informações Pessoais</h1>
           <label className="checkout-label">
-            Nome:
+            Nome do destinatário:
             <br />
-            <input className="checkout-input" type="text" />
+            <input
+              required
+              className="checkout-input"
+              type="text"
+              name="name"
+              onChange={handleChange}
+            />
           </label>
           <label className="checkout-label">
             Email:
@@ -162,11 +169,6 @@ const Checkout = () => {
               value={user.email}
               disabled
             />
-          </label>
-          <label className="checkout-label">
-            Telefone:
-            <br />
-            <input className="checkout-input" type="text" />
           </label>
           <SubmitButton
             isLoading={isLoading}
