@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { Auth } from "aws-amplify";
 import { Provider, useDispatch } from "react-redux";
 
@@ -16,6 +16,7 @@ function AppWraper() {
 }
 
 function App() {
+  const [ AppLoading, setAppLoading ] = useState(true)
   const dispatch = useDispatch();
 
   const loadSession = useCallback(async () => {
@@ -23,12 +24,19 @@ function App() {
       .then((cognitoUser) => {
         dispatch(login(cognitoUser.idToken.payload));
       })
-      .catch((err) => {});
+      .catch((err) => {})
+      .finally(() => {
+        setAppLoading(false)
+      });
   }, [dispatch]);
 
   useEffect(() => {
     loadSession();
   }, [loadSession]);
+
+  if(AppLoading) {
+    return <div></div>
+  }
 
   return (
     <div id="screenContainer">
