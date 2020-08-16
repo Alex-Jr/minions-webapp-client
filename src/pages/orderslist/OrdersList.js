@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import OrderService from "../../services/OrderService";
@@ -10,19 +9,15 @@ import "./OrdersList.css";
 const OrdersList = () => {
   const [ordersListData, setOrdersListData] = useState([]);
 
-  const { userId } = useSelector((state) => state.userReducer);
-
   useEffect(() => {
-    if (userId !== null) {
-      OrderService.getOrdersList(userId)
-        .then((data) => {
-          setOrdersListData(data);
-        })
-        .catch(() => {
-          setOrdersListData([]);
-        });
-    };
-  }, [userId]);
+    OrderService.getOrdersList()
+      .then((data) => {
+        setOrdersListData(data);
+      })
+      .catch(() => {
+        setOrdersListData([]);
+      });
+  }, []);
 
   return (
     <div id="orders-page">

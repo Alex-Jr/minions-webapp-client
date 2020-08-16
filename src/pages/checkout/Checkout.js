@@ -33,7 +33,6 @@ const Checkout = () => {
     event.preventDefault();
     setIsLoading(true);
     const order = {
-      userId: user.userId,
       email: user.email,
       address: {
         cep: `${cep}`,
