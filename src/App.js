@@ -23,11 +23,7 @@ function App() {
       .then((cognitoUser) => {
         dispatch(login(cognitoUser.idToken.payload));
       })
-      .catch((err) => {
-        if (err !== "No current user") {
-          alert(err);
-        }
-      });
+      .catch((err) => {});
   }, [dispatch]);
 
   useEffect(() => {

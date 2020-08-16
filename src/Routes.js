@@ -12,7 +12,7 @@ import {
   OrdersList,
   Orders
 } from "./pages";
-import { NavBar } from "./components";
+import { NavBar, UnauthenticatedRoute, AuthenticatedRoute } from "./components";
 
 export default (props) => {
   return (
@@ -22,12 +22,12 @@ export default (props) => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/login">
+        <UnauthenticatedRoute exact path="/login">
           <Login />
-        </Route>
-        <Route exact path="/signin">
+        </UnauthenticatedRoute>
+        <UnauthenticatedRoute exact path="/signin">
           <Signin />
-        </Route>
+        </UnauthenticatedRoute>
         <Route exact path="/products">
           <ProductsList />
         </Route>
@@ -37,15 +37,15 @@ export default (props) => {
         <Route exact path="/cart">
           <Cart />
         </Route>
-        <Route exact path="/checkout">
+        <AuthenticatedRoute exact path="/checkout">
           <Checkout />
-        </Route>
-        <Route exact path="/orders">
+        </AuthenticatedRoute>
+        <AuthenticatedRoute exact path="/orders">
           <OrdersList />
-        </Route>
-        <Route exact path="/orders/:orderId">
+        </AuthenticatedRoute>
+        <AuthenticatedRoute exact path="/orders/:orderId">
           <Orders />
-        </Route>
+        </AuthenticatedRoute>
         <Route>
           <Home />
         </Route> 

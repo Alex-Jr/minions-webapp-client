@@ -26,8 +26,7 @@ const Checkout = () => {
 
   useEffect(() => {
     if (Object.values(cart.products).length === 0) history.push("/");
-    if (!user.logged) history.push("/cart");
-  }, [cart, history, user]);
+  }, [cart, history]);
 
   const handleSubmitPurchase = async (event) => {
     event.preventDefault();
