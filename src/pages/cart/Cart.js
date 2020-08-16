@@ -40,7 +40,7 @@ const Cart = () => {
           <tr>
             <th>Imagem</th>
             <th>Produto</th>
-            <th className="cart-mobileStyle">Valor Uninário</th>
+            <th className="cart-mobileStyle">Valor Unitário</th>
             <th>Quantidade</th>
             <th className="cart-mobileStyle">SubTotal</th>
           </tr>

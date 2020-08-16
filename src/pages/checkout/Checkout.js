@@ -39,7 +39,6 @@ const Checkout = () => {
       .then(() => {
         alert("Pedido realizado com sucesso");
         dispatch(clearcart());
-        history.push("/");
       })
       .catch(() => {
         alert("Falha ao realizar pedido!");

@@ -25,7 +25,7 @@ const Orders = () => {
       {ordersData && 
         <div id="orders-container">
           <h1>Pedido N°{ordersData.orderId}</h1>
-          <h2>Feito às {FormatDate(ordersData.orderedAt)} - Valor: {FormatPrice(ordersData.totalPrice)}</h2>
+          <h2>Feito em {FormatDate(ordersData.orderedAt)} - Valor: {FormatPrice(ordersData.totalPrice)}</h2>
           <p>Endereço para entrega: {ordersData.address.street} - CEP: {ordersData.address.cep}</p>
           <p>Pedido:</p>
           {Object.values(ordersData.products).map((product, index) => {
