@@ -12,7 +12,7 @@ export default {
       })
   },
   getProductList: async (category) => {
-    return await API.get(APINAME, `/products?category=${category}`)
+    return await API.get(APINAME, `/products${category ? `?category=${category}` : ""}`)
       .then((data) => {
         if (!data) throw new Error();
         return data;

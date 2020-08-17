@@ -11,7 +11,7 @@ const ProductsList = () => {
 
   useEffect(() => {
     ProductServices.getProductList(
-      state === null ? "miniatura" : state.category
+      state !== null ? state.category : undefined
     )
       .then((data) => {
         setProdcutListData(data);
